@@ -2,7 +2,8 @@
 lock '3.6.1'
 
 set :application, '3lmny'
-set :repo_url, 'git@github.com:ialhamad/3lmny.git'
+# set :repo_url, 'git@github.com:ialhamad/3lmny.git'
+set :repo_url, 'https://ialhamad:G6ibra%3Fg7%3B@github.com/ialhamad/3lmny'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
