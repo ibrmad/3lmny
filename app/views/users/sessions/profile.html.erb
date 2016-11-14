@@ -7,16 +7,14 @@
     <div class="user-username">
       <%= "#{@user.username}@" %>
     </div>
-    <div class="user-bio">لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص    </div>
-    <div class="user-points-date flex-center-start">
-      <div class="points"><%= "نقاط السمعة #{@user.points}" %></div>
-      <div class="registration-date"><%= "تاريخ التسجيل #{@user.created_at.strftime('%F')}" %></div>
+    <div class="user-bio">
+      <%= @user.bio %>
     </div>
   </div>
   <div class="profile-tabs flex-center-around">
-    <div class="tab">مجتماعات أُتابعها</div>
-    <div class="tab active">مواضيعي</div>
-    <div class="tab">تعليقاتي</div>
+    <div class="tab">My Discussions</div>
+    <div class="tab active">My Documents</div>
+    <div class="tab">My Comments</div>
   </div>
   <div class="user-posts">
     <% @posts.each do |post| %>
@@ -25,20 +23,9 @@
           <%= link_to post.title, post_path(post) %>
         </div>
         <div class="info flex-center-start">
-          <div class="votes flex-center-around">
-            <%= link_to upvote_post_path(post), method: :patch, remote: true, class: "upvote vote-box" do %>
-              <svg class="icon-chevron-down upvote-icon sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
-            <% end %>
-            <div class="vote-avg vote-box">
-              <%= post.post_votes %>
-            </div>
-            <%= link_to downvote_post_path(post), method: :patch, remote: true, class: "downvote vote-box" do %>
-              <svg class="icon-chevron-down sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
-            <% end %>
-          </div>
             <div class="time-ago info-element">
               <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
-              <%= time_ago_in_arabic(post.created_at) %>
+              <%= time_ago_in_words(post.created_at) %>
             </div>
             <div class="comments info-element">
               <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>

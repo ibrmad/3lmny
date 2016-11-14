@@ -19,14 +19,16 @@
           <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
           23
         </div>
-        <%= link_to edit_post_path(@post), class: "edit info-element" do %>
-          <svg class="icon-create sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-create"></use></svg>
-          تعديل
-        <% end %>
-        <%= link_to @post, :method => :delete, data: { confirm:  "هل أنت متأكد؟"}, class: "delete info-element" do %>
-          <svg class="icon-delete sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-delete"></use></svg>
-          حذف
-        <% end %>
+          <% if @post.user == current_user %>
+            <%= link_to edit_post_path(@post), class: "edit info-element" do %>
+              <svg class="icon-create sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-create"></use></svg>
+              Edit
+            <% end %>
+            <%= link_to @post, :method => :delete, data: { confirm:  "Are you sure?"}, class: "delete info-element" do %>
+              <svg class="icon-delete sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-delete"></use></svg>
+              Delete
+            <% end %>
+          <% end %>
       </div>
       <div id="md-content" class="post-content">
         <%= @post.content %>
