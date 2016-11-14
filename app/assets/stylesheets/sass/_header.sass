@@ -1,0 +1,81 @@
+#Header
+  width: 100%
+  height: 115px
+  font-family: $content-font
+  background: $primary-color
+  background: -webkit-linear-gradient(to left, darken($primary-color, 2%), $primary-color-light)
+  background: linear-gradient(to left, darken($primary-color, 2%), $primary-color-light)
+  display: block
+  color: $primary-color-text
+.header-elements
+  display: flex
+  height: 75px
+  width: 100%
+  justify-content: space-between
+  align-items: center
+  padding: 0 1em
+  .logo
+    width: 100px
+    height: 40px
+    img
+      margin-top: 3px
+.side-elements
+  display: flex
+  justify-content: space-between
+  .user-functions
+    .function
+      cursor: pointer
+      margin-right: 10px
+    .add-post
+      width: 22px
+      height: 22px
+      margin-right: 10px
+      color: $primary-color-text
+  .user-info
+    margin-right: 1em
+  .user-avatar
+    border-radius: 100%
+    margin: 0 5px 0 4px
+  .user-name
+    font-size: 1.1em
+    color: $primary-color-text
+    margin-left: 3px
+
+#navigation-bar
+  width: 100%
+  display: block
+  background: #00accc
+  height: 40px
+  font-size: 1.1em
+  .element
+    padding: 0.6em 2em 0.5em 2em
+    color: white
+    font-weight: 500
+    cursor: pointer
+  .container
+    width: 40%
+    height: 100%
+.dropdown-btn
+  cursor: pointer
+#user_settings
+  right: 30px
+#addable
+  right: 230px
+.dropdown-list
+  width: 200px
+  background: white
+  position: absolute
+  top: 50px
+  box-shadow: 0px 2px 3px #ccc
+  border-radius: 3px
+  display: flex
+  flex-direction: column
+  a
+    height: 40px
+    padding: 10px
+    border-bottom: 1px solid $divider-color
+.search-bar
+  width: 700px
+  height: 30px
+  background: white
+  border-radius: 5px

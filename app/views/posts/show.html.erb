@@ -1,0 +1,36 @@
+<div class="show-post">
+  <div class="post-container white-box">
+    <div class="post">
+      <div class="title"><%= link_to @post.title, post_path(@post) %></div>
+      <div class="info flex-center-start">
+        <div class="username info-element">
+          <%= image_tag (@post.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+          <%= link_to @post.user.username, user_profile_path(@post.user.username) %>
+        </div>
+        <div class="time-ago info-element">
+          <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+          <%= time_ago_in_words(@post.created_at) %>
+        </div>
+        <div class="category info-element">
+          <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+          <%= @post.course.name %>
+        </div>
+        <div class="comments info-element">
+          <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
+          23
+        </div>
+        <%= link_to edit_post_path(@post), class: "edit info-element" do %>
+          <svg class="icon-create sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-create"></use></svg>
+          تعديل
+        <% end %>
+        <%= link_to @post, :method => :delete, data: { confirm:  "هل أنت متأكد؟"}, class: "delete info-element" do %>
+          <svg class="icon-delete sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-delete"></use></svg>
+          حذف
+        <% end %>
+      </div>
+      <div id="md-content" class="post-content">
+        <%= @post.content %>
+      </div>
+    </div>
+  </div>
+</div>

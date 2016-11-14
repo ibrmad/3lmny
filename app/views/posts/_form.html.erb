@@ -1,0 +1,17 @@
+<%= form_for(post) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= select_tag :course_id, options_for_select(@courses), prompt: "Course name", class: "select-courses" %>
+  <%= f.text_field :title, placeholder: "Title describe the content" %>
+  <%= f.text_area :content, placeholder: "Content of the discuss" %>
+  <%= f.submit "Post", class: "btn post_submit" %>
+<% end %>

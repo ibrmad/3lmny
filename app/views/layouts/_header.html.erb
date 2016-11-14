@@ -1,0 +1,42 @@
+<header id="Header">
+  <div class="header-elements">
+    <%= link_to root_path, class: "logo" do %>
+    <img src="<%= asset_path 'logo.svg' %>" />
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="side-elements">
+        <div class="user-functions flex-center-around">
+          <svg class="icon-search function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
+          <svg class="icon-add-circle"  onclick="document.getElementById('addable').classList.toggle('collapsed');"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-circle"></use></svg>
+          <svg class="icon-notifications function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
+          <svg class="icon-mail function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-mail"></use></svg>
+        </div>
+        <div class="user-info flex-center-around">
+          <%= link_to current_user.username, user_profile_path(current_user.username), class: "user-name" %>
+          <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
+          <svg class="icon-chevron-down sixteenth-px dropdown-btn" onclick="document.getElementById('user_settings').classList.toggle('collapsed');"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+        </div>
+      </div>
+      <div id="user_settings" class="dropdown-list collapsed">
+        <%= link_to 'Edit profile', edit_user_path(current_user) %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </div>
+      <div id="addable" class="dropdown-list collapsed">
+        <%= link_to 'Add discussion', new_post_path %>
+        <%= link_to 'Add document', new_document_path %>
+      </div>
+    <% else %>
+      <div class="side-elements">
+        <%= link_to 'Login', login_path, class: "btn btn-dark-shadow header-btn" %>
+        <%= link_to 'Register', register_path, class: "btn btn-dark-shadow header-btn" %>
+      </div>
+    <% end %>
+          </div>
+  <nav id="navigation-bar">
+    <div class="container flex-center-around">
+      <%= link_to 'Discussions', posts_path, class: 'element active' %>
+      <%= link_to 'Documents', documents_path, class: 'element' %>
+      <%= link_to 'Videos', root_path, class: 'element' %>
+    </div>
+  </nav>
+</header>
