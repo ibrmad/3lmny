@@ -11,7 +11,7 @@
           <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
           <%= time_ago_in_words(@post.created_at) %>
         </div>
-        <div class="category info-element">
+        <div class="course info-element">
           <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
           <%= @post.course.name %>
         </div>

@@ -5,19 +5,19 @@
       <%= "#{@user.first_name} #{@user.last_name}" %>
     </div>
     <div class="user-username">
-      <%= "#{@user.username}@" %>
+      <%= "@#{@user.username}" %>
     </div>
     <div class="user-bio">
       <%= @user.bio %>
     </div>
   </div>
   <div class="profile-tabs flex-center-around">
-    <div class="tab">My Discussions</div>
-    <div class="tab active">My Documents</div>
+    <div class="tab active">My Discussions</div>
+    <div class="tab">My Documents</div>
     <div class="tab">My Comments</div>
   </div>
   <div class="user-posts">
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <div class="post user-single-post">
         <div class="title">
           <%= link_to post.title, post_path(post) %>
@@ -26,6 +26,10 @@
             <div class="time-ago info-element">
               <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
               <%= time_ago_in_words(post.created_at) %>
+            </div>
+            <div class="course info-element">
+              <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+              <%= post.course.name %>
             </div>
             <div class="comments info-element">
               <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>

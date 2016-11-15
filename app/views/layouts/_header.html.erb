@@ -34,9 +34,9 @@
           </div>
   <nav id="navigation-bar">
     <div class="container flex-center-around">
-      <%= link_to 'Discussions', posts_path, class: 'element active' %>
-      <%= link_to 'Documents', documents_path, class: 'element' %>
-      <%= link_to 'Videos', root_path, class: 'element' %>
+      <%= link_to 'Discussions', posts_path, class: 'element' + active_tab %>
+      <%= link_to 'Documents', documents_path, class: 'element' + active_tab  %>
+      <%= link_to 'Videos', root_path, class: 'element' + active_tab  %>
     </div>
   </nav>
 </header>

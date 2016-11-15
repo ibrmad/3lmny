@@ -12,6 +12,6 @@
   <% end %>
   <%= select_tag :course_id, options_for_select(@courses), prompt: "Course name", class: "select-courses" %>
   <%= f.text_field :title, placeholder: "Title describe the content" %>
-  <%= f.text_area :content, placeholder: "Content of the discuss" %>
+  <%= f.text_area :content, placeholder: "Content of the discussion" %>
   <%= f.submit "Post", class: "btn post_submit" %>
 <% end %>

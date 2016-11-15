@@ -10,23 +10,13 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= select_tag :course_id, options_for_select(@courses) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :document %>
-    <%= f.hidden_field :document, value: f.object.cached_document_data %>
-    <%= f.file_field :document, accept: ".pdf, .doc, .docx, .ppt, .pptx" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= select_tag :course_id, options_for_select(@courses), prompt: "Course name", class: "select-courses" %>
+  <%= f.text_field :title, placeholder: "Title describe the document" %>
+  <label for="avatar_upload" class="btn upload-btn" id="avatar_label">
+    <svg class="icon-document"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document"></use></svg>
+    <span>Select a document</span>
+  </label>
+  <%= f.hidden_field :document, value: f.object.cached_document_data %>
+  <%= f.file_field :document, id: "avatar_upload", accept: ".pdf, .doc, .docx, .ppt, .pptx" %>
+  <%= f.submit "Publish!", class: "btn document-submit" %>
 <% end %>
