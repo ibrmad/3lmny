@@ -1,21 +1,34 @@
+.posts
+  width: calc(70%, -.4em)
+  margin-right: 0.4em
+.posts-sidebar
+  width: 30%
+  .title
+    text-align: center
+    color: $primary-color
+  .content
+    padding: .5em
+    color: $secondary-text-color
 .post
-  margin-bottom: 2em
+  margin-bottom: 0.4em
+  &:first
+    margin-top: 5em
   &:last-child
     margin-bottom: 0
   .title
     padding: 0.4em 0.6em
     font-family: $headline-font
     border-bottom: 1px solid $divider-color
-    font-size: 1.5em
+    font-size: 1.3em
     a
-      color: #5f7d82
+      color: $primary-color
 .info-element
   // border-left: 1px solid $divider-color
   padding: 0.5em 1em
-  color: #a1bdc1
+  color: $secondary-text-color
   a
     margin-top: -5px
-    color: #a1bdc1
+    color: $secondary-text-color
   svg
     margin-bottom: -3px
 .user_avatar
@@ -27,12 +40,8 @@
     border-bottom: 1px solid $divider-color
 .post-content
   padding: 2em
-  pre
-    direction: ltr
-    border-radius: 5px
-    border: 1px solid $divider-color
-    code
-      background: #f7f7f7
+
+
 .post_form
   padding: 20px 30px
 #post_title
@@ -47,3 +56,13 @@
   resize: vertical
 .post_submit
   width: 20%
+#post_course_id
+  padding: 0.4em
+  margin-bottom: 1em
+  cursor: pointer
+  display: block
+#major_name
+  display: block
+  padding: 0.4em
+  margin-bottom: 1em
+  cursor: pointer

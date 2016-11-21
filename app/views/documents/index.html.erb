@@ -1,35 +1,63 @@
-<div class="body flex-column">
-  <% @documents.each do |document| %>
-    <div class="white-box document">
-      <div class="title">
-        <%= document.title %>
-      </div>
-      <div class="document-info">
-        <div class="info flex-center-start">
-            <div class="username info-element">
-              <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
-              <%= link_to document.user.username, user_profile_path(document.user.username) %>
-            </div>
-            <div class="time-ago info-element">
-              <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
-              <%= time_ago_in_words(document.created_at) %>
-            </div>
-            <div class="category info-element">
-              <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-              <%= document.course.name %>
-            </div>
+<div class="container flex-start">
+  <div class="posts flex-column">
+    <% @documents.each do |document| %>
+      <div class="white-box document">
+        <div class="title">
+          <%= document.title %>
         </div>
-        <div class="download flex-center-end">
-          <div class="doc-info flex-center-start">
-            <svg class="icon-document sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document"></use></svg>
-            <%= " " + Rack::Mime::MIME_TYPES.invert[document.document.mime_type].sub(/./, '').upcase + " | " %>
-            <%= (document.document.size / 1024).round(2) %> KB
+        <div class="document-info">
+          <div class="info flex-center-start">
+              <div class="username info-element">
+                <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+                <%= link_to document.user.username, user_profile_path(document.user.username) %>
+              </div>
+              <div class="time-ago info-element">
+                <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+                <%= time_ago_in_words(document.created_at) %>
+              </div>
+              <div class="category info-element">
+                <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+                <%= document.course.name %>
+              </div>
           </div>
-          <%= link_to document.document_url, class: "btn" do %>
-            <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
-          <% end %>
+          <div class="download flex-center-end">
+            <div class="doc-info flex-center-start">
+              <svg class="icon-document sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document"></use></svg>
+              <%= " " + Rack::Mime::MIME_TYPES.invert[document.document.mime_type].sub(/./, '').upcase + " | " %>
+              <%= (document.document.size / 1024).round(2) %> KB
+            </div>
+            <%= link_to document.document_url, class: "btn" do %>
+              <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
+            <% end %>
+          </div>
         </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="posts-sidebar">
+    <div class="post white-box">
+      <div class="title">
+        SEARCH
+      </div>
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </div>
     </div>
-  <% end %>
+    <div class="post white-box">
+      <div class="title">
+        LATEST COMMENTS
+      </div>
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+    <div class="post white-box">
+      <div class="title">
+        SEARCH
+      </div>
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+  </div>
 </div>

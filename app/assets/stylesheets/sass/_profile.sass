@@ -1,7 +1,8 @@
 .profile
-  color: #7b9a9e
+  color: $secondary-text-color
   .active
-    border-bottom-color: #00cbed
+    border-bottom-color: $primary-color
+    color: #b6dce2
 .profile-user-info
   padding: 2em 0
   border-bottom: 1px solid $divider-color
@@ -10,18 +11,19 @@
     border: 2px solid $divider-color
   .user-full_name
     font-size: 1.3em
-    font-weight: 700
-    margin-bottom: -3px
+    font-weight: 500
     margin-top: 10px
+    color: $primary-color
   .user-bio
     width: 50%
     margin-top: 5px
     text-align: center
+
 .user-posts
   padding: 2em
 .user-single-post
   border-radius: 5px
-  background: #fbfbfb
+  background: lighten($accent-color, 3%)
   border: 1px solid $divider-color
 .profile-tabs
   border-bottom: 1px solid $divider-color

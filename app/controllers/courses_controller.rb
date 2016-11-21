@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :set_major, only: [:edit, :update, :new]
 
   def index
     @courses = Course.all
@@ -18,7 +17,6 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.major_id = params[:major_id]
     if @course.save
     redirect_to @course
     else
@@ -27,7 +25,6 @@ class CoursesController < ApplicationController
   end
 
   def update
-    @course.major_id = params[:major_id]
     if @course.update(course_params)
       redirect_to @course
     else
@@ -45,11 +42,8 @@ class CoursesController < ApplicationController
     def set_course
       @course = Course.find(params[:id])
     end
-    def set_major
-      @majors = Major.all.map{|c| [ c.name, c.id ] }
-    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name)
+      params.require(:course).permit(:name, :major_id)
     end
 end

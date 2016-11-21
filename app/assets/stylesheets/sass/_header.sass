@@ -1,12 +1,14 @@
 #Header
   width: 100%
-  height: 115px
+  height: 75px
   font-family: $content-font
-  background: $primary-color
-  background: -webkit-linear-gradient(to left, darken($primary-color, 2%), $primary-color-light)
-  background: linear-gradient(to left, darken($primary-color, 2%), $primary-color-light)
+  background: $accent-color url(/header-pattern.svg)
+  background-size: 150px
   display: block
-  color: $primary-color-text
+  color: white
+  position: fixed
+  top: 0
+  z-index: 9999
 .header-elements
   display: flex
   height: 75px
@@ -17,8 +19,6 @@
   .logo
     width: 100px
     height: 40px
-    img
-      margin-top: 3px
 .side-elements
   display: flex
   justify-content: space-between
@@ -30,7 +30,7 @@
       width: 22px
       height: 22px
       margin-right: 10px
-      color: $primary-color-text
+      color: white
   .user-info
     margin-right: 1em
   .user-avatar
@@ -38,7 +38,7 @@
     margin: 0 5px 0 4px
   .user-name
     font-size: 1.1em
-    color: $primary-color-text
+    color: white
     margin-left: 3px
 
 #navigation-bar
@@ -87,3 +87,18 @@
   color: $primary-color
   box-shadow: none
   margin-right: 0.5em
+.menu
+  width: 50%
+  a
+    color: white
+    font-size: 1em
+    font-weight: 500
+#menu-btn
+  color: white
+  cursor: pointer
+  width: 30px
+  height: 30px
+  margin-right: 1em
+  svg
+    width: 30px !important
+    height: 30px !important

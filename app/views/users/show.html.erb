@@ -31,8 +31,20 @@
           <% end %>
       </div>
       <div id="md-content" class="post-content">
-        <%= @post.content %>
+        <%= @post.content.html_safe %>
       </div>
     </div>
+  </div>
+  <div class="white-box add-comment">
+    <h3>Comments</h3>
+    <%= form_for [@post, Comment.new] do |f| %>
+    <%= f.trix_editor :content, placeholder: "Add a comment", class: "new-comment" %><br/>
+    <%= f.submit "Add Comment", class: "btn" %>
+    <% end %>
+  </div>
+  <div class="white-box add-comment">
+    <ul>
+      <%= render(partial: 'comments/comment', collection: @post.comments) %>
+    </ul>
   </div>
 </div>

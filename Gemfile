@@ -11,6 +11,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'shrine', '~> 2.5'
 gem 'devise', '~> 4.2'
+gem 'trix', '~> 0.9.9'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

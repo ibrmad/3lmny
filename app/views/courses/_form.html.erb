@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= select_tag :major_id, options_for_select(@majors) %>
+    <%= f.grouped_collection_select :major_id, Faculty.all, :majors, :name, :id, :name %>
   </div>
 
   <div class="actions">

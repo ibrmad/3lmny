@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.course_id = params[:course_id]
+    # @post.course_id = params[:course_id]
     if @post.save
     redirect_to @post
     else
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.course_id = params[:course_id]
+    # @post.course_id = params[:course_id]
     if @post.update(post_params)
       redirect_to @post
     else
@@ -47,9 +47,11 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
     def set_courses
-      @courses = Course.all.map{|c| [ c.name, c.id ] }
+      @faculties = Faculty.all.map{|c| [ c.name, c.id ] }
+      @majors = Major.all.map{|c| [ c.name, c.id , c.faculty ] }
+      @courses = Course.all.map{|c| [ c.name, c.id, c.major ] }
     end
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :course_id)
     end
 end

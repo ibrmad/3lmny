@@ -15,12 +15,14 @@
   width: 100%
   max-width: 1200px
 .white-box
-  background: #ffffff
-  border-radius: 5px
+  background: $accent-color
   overflow: hidden
 .flex-column
   display: flex
   flex-direction: column
+.flex-start
+  display: flex
+  flex-direction: flex-start
 .flex-column-center
   display: flex
   flex-direction: column
@@ -31,20 +33,12 @@
   outline: none
   text-decoration: none
   border: none
-  border-radius: 5px
   display: flex
   align-items: center
   justify-content: center
   background: $primary-color
   color: white
-  box-shadow: 1px 1px 3px #accfd6
-  transition: box-shadow .15s ease-in-out
   font-size: 1.1em
-  &:hover
-    box-shadow: 1px 2px 4px #accfd6
-  &:active
-    box-shadow: 0px 0px 0px #accfd6
-    background: $primary-color-dark
 .btn-block
   width: 100%
 .header-btn
@@ -61,26 +55,3 @@
 .collapsed
   display: none
   visibility: hidden
-.select-courses
-  background: white
-  border: 1px solid #e1e1e1
-  padding: 0.4em
-  outline: none
-  border-radius: 5px
-  margin-bottom: 1em
-  cursor: pointer
-  option:first
-    color: #999
-
-@font-face
-  font-family: 'Noto Naskh Arabic'
-  font-style: normal
-  font-weight: 400
-  src: url(font_path("NotoNaskhArabic-Regular.woff2")) format('woff2')
-  src: url(font_path("NotoNaskhArabic-Regular.woff")) format('woff')
-@font-face
-  font-family: 'Noto Naskh Arabic'
-  font-style: normal
-  font-weight: 700
-  src: url(font_path("NotoNaskhArabic-Bold.woff2")) format('woff2')
-  src: url(font_path("NotoNaskhArabic-Bold.woff")) format('woff')

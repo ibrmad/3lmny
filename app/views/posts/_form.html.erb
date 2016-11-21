@@ -10,8 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <%= select_tag :course_id, options_for_select(@courses), prompt: "Course name", class: "select-courses" %>
+
+  <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name) %>
+  <%= f.grouped_collection_select :course_id, Major.all, :courses, :name, :id, :name %>
   <%= f.text_field :title, placeholder: "Title describe the content" %>
-  <%= f.text_area :content, placeholder: "Content of the discussion" %>
+  <%= f.trix_editor :content, placeholder: "Content of the discussion" %>
   <%= f.submit "Post", class: "btn post_submit" %>
 <% end %>

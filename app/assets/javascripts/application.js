@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require trix
 //= require turbolinks
 //= require_tree .
-$(function() {
+$( document ).on('turbolinks:load', function() {
   $(document).on('change', '#avatar_upload', function() {
     var input = $(this),
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');

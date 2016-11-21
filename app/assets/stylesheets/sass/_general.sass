@@ -1,31 +1,43 @@
 body
-  background: #ebf3f4
+  background: #131719
   font-family: $content-font
+  color: #cdd8e0
 [class^="icon-"], [class*=" icon-"]
   height: 22px
   width: 22px
   fill: currentColor
-input, textarea
+input, textarea, select
   outline: none
   border: none
+select
+  background: #131719
+  color: #cdd8e0
+  border: 1px solid #0d0e0e
 input[type=text], input[type=password], input[type=email], textarea
-  border: 1px solid #e1e1e1
-  border-radius: 3px
+  color: #cdd8e0
+  background: #131719
+  border: 1px solid #0d0e0e
   padding: 5px
   transition: border-color 200ms ease-in-out
   &:focus
     border-color: $primary-color
 a
-  color: $secondary-text-color
+  color: $primary-color
+
 h1
-  font-size: 2em
+  font-size: 1.6em
 h2
-  font-size: 1.7em
+  font-size: 1.4em
 h3
-  font-size: 1.5em
-h4
   font-size: 1.2em
-h5
+h4
   font-size: 1em
-h6
+h5
   font-size: 0.8em
+h6
+  font-size: 0.6em
+h1, h2, h3, h4, h5, h6
+  font-family: $headline-font
+  margin: 0.5em 0
+#Content
+  margin-top: 7em
