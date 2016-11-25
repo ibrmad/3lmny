@@ -1,3 +1,4 @@
+
 <header id="Header">
   <div class="header-elements">
     <div id="menu-btn">
@@ -16,7 +17,6 @@
       <div class="side-elements">
         <div class="user-functions flex-center-around">
           <svg class="icon-search function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
-          <svg class="icon-add-circle function"  onclick="document.getElementById('addable').classList.toggle('collapsed');"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-circle"></use></svg>
           <svg class="icon-notifications function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
           <svg class="icon-mail function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-mail"></use></svg>
         </div>
@@ -30,14 +30,10 @@
         <%= link_to 'Edit profile', edit_user_path(current_user) %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       </div>
-      <div id="addable" class="dropdown-list collapsed">
-        <%= link_to 'Add discussion', new_post_path %>
-        <%= link_to 'Add document', new_document_path %>
-      </div>
     <% else %>
       <div class="side-elements">
-        <%= link_to 'Register', register_path, class: "btn header-btn" %>
-        <%= link_to 'Login', login_path, class: "btn header-btn-outline" %>
+        <%= link_to 'Login', login_path, class: "login header-btn" %>
+        <%= link_to 'Register', register_path, class: "register header-btn" %>
       </div>
     <% end %>
           </div>

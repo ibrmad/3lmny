@@ -1,0 +1,12 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "container white-box login-form flex-column"}) do |f| %>
+  <h1>Login</h1>
+  <%= f.email_field :email, autofocus: true, placeholder: "Your email" %>
+  <%= f.password_field :password, autocomplete: "off", placeholder: "Your password" %>
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+  <%= f.submit "Login", class: "btn" %>
+<% end %>

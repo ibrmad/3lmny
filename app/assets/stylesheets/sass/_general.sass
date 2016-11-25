@@ -2,6 +2,7 @@ body
   background: #131719
   font-family: $content-font
   color: #cdd8e0
+  overflow-x: hidden
 [class^="icon-"], [class*=" icon-"]
   height: 22px
   width: 22px
@@ -10,13 +11,13 @@ input, textarea, select
   outline: none
   border: none
 select
-  background: #131719
+  background: #1f2325
   color: #cdd8e0
-  border: 1px solid #0d0e0e
+  border: 1px solid #101314
 input[type=text], input[type=password], input[type=email], textarea
   color: #cdd8e0
-  background: #131719
-  border: 1px solid #0d0e0e
+  background: #1f2325
+  border: 1px solid #101314
   padding: 5px
   transition: border-color 200ms ease-in-out
   &:focus
@@ -41,3 +42,29 @@ h1, h2, h3, h4, h5, h6
   margin: 0.5em 0
 #Content
   margin-top: 7em
+#mainContent
+  transition: margin 300ms ease-out
+#hiddenMenu
+  display: flex
+  flex-direction: column
+  align-items: center
+  align-content: center
+  transition: margin 300ms ease-out
+  height: 100%
+  width: 250px
+  position: fixed
+  overflow-y: auto
+  margin-top: -3em
+  margin-left: -250px
+  background: #0e7ca2
+  .item
+    width: 100%
+    padding: .7em
+    font-size: 1.1em
+    color: white
+    border-bottom: 1px solid #1c6e8b
+    transition: background 300ms ease-out
+    &:hover
+      background: #1693be
+    svg
+      margin-bottom: -2px

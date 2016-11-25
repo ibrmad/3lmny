@@ -21,4 +21,8 @@ $( document ).on('turbolinks:load', function() {
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     $('#avatar_label').text(label);
   });
+  $('#menu-btn').click(function () {
+    $('#hiddenMenu').toggleClass('toggle-menu');
+    $('#mainContent').toggleClass('toggle-content');
+  });
 });

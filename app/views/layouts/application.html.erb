@@ -26,9 +26,37 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <div id="Content" class="container">
-      <%= yield %>
+    <div class="hiddenMenu" id="hiddenMenu">
+      <%= link_to new_post_path, class: 'item' do %>
+        <svg class="icon-add-circle sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-circle "></use></svg>
+        Add new discussion
+      <% end %>
+      <%= link_to new_document_path, class: 'item' do %>
+        <svg class="icon-add-circle sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-circle "></use></svg>
+        Add new document
+      <% end %>
+      <%= link_to posts_path, class: 'item' do %>
+        <svg class="icon-list sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-list "></use></svg>
+        Discussions
+      <% end %>
+      <%= link_to documents_path, class: 'item' do %>
+        <svg class="icon-document sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document "></use></svg>
+        Documents
+      <% end %>
+      <%= link_to root_path, class: 'item' do %>
+        <svg class="icon-youtube sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-youtube "></use></svg>
+        Videos
+      <% end %>
+      <%= link_to root_path, class: 'item' do %>
+        <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar "></use></svg>
+        Upcoming
+      <% end %>
+    </div>
+    <div id="mainContent">
+      <%= render 'layouts/header' %>
+      <div id="Content" class="container">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
