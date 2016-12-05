@@ -1,8 +1,11 @@
 body
-  background: #131719
+  background: #f5f5f5
   font-family: $content-font
-  color: #cdd8e0
+  color: darken( $divider-color, 40%)
   overflow-x: hidden
+.fullApp
+  display: flex
+  width: 100%
 [class^="icon-"], [class*=" icon-"]
   height: 22px
   width: 22px
@@ -10,14 +13,19 @@ body
 input, textarea, select
   outline: none
   border: none
+select, textarea
+  background: #f5f5f5
+  color: darken( $divider-color, 40%)
+  border: 1px solid darken( $divider-color, 10%)
 select
-  background: #1f2325
-  color: #cdd8e0
-  border: 1px solid #101314
+  display: block
+  padding: 0.4em
+  margin-bottom: 1em
+  cursor: pointer
 input[type=text], input[type=password], input[type=email], textarea
-  color: #cdd8e0
-  background: #1f2325
-  border: 1px solid #101314
+  color: darken( $divider-color, 40%)
+  background: #f5f5f5
+  border: 1px solid darken( $divider-color, 10%)
   padding: 5px
   transition: border-color 200ms ease-in-out
   &:focus
@@ -40,31 +48,5 @@ h6
 h1, h2, h3, h4, h5, h6
   font-family: $headline-font
   margin: 0.5em 0
-#Content
-  margin-top: 7em
 #mainContent
-  transition: margin 300ms ease-out
-#hiddenMenu
-  display: flex
-  flex-direction: column
-  align-items: center
-  align-content: center
-  transition: margin 300ms ease-out
-  height: 100%
-  width: 250px
-  position: fixed
-  overflow-y: auto
-  margin-top: -3em
-  margin-left: -250px
-  background: #0e7ca2
-  .item
-    width: 100%
-    padding: .7em
-    font-size: 1.1em
-    color: white
-    border-bottom: 1px solid #1c6e8b
-    transition: background 300ms ease-out
-    &:hover
-      background: #1693be
-    svg
-      margin-bottom: -2px
+  width: calc(100% - 200px)

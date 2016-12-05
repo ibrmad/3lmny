@@ -4,7 +4,12 @@ class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @documents = Document.all.order("created_at DESC")
+    @documents = Document.all
+    if params[:search] || params[:course_id]
+      @documents = Document.search(params[:search], params[:course_id]).order("created_at DESC")
+    else
+      @documents = Document.all.order('created_at DESC')
+    end
   end
 
   def show

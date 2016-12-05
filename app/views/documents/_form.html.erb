@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name) %>
-  <%= f.grouped_collection_select :course_id, Major.all, :courses, :name, :id, :name %>
+  <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
+  <%= f.grouped_collection_select :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:" %>
   <%= f.text_field :title, placeholder: "Title describe the document" %>
   <label for="avatar_upload" class="btn upload-btn" id="avatar_label">
     <svg class="icon-document"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document"></use></svg>
@@ -19,5 +19,5 @@
   </label>
   <%= f.hidden_field :document, value: f.object.cached_document_data %>
   <%= f.file_field :document, id: "avatar_upload", accept: ".pdf, .doc, .docx, .ppt, .pptx" %>
-  <%= f.submit "Publish!", class: "btn document-submit" %>
+  <%= f.submit "Publish", class: "btn document-submit" %>
 <% end %>

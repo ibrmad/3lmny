@@ -31,7 +31,7 @@
           </div>
           <div class="comments info-element">
             <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
-            <%= post.comments.count %>
+            23
           </div>
         </div>
       </div>
@@ -43,11 +43,11 @@
         SEARCH
       </div>
       <div class="content">
-        <%= form_tag posts_path, method: :get, class: "search-box flex-column" do |f| %>
-          <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
-          <%= grouped_collection_select(nil, :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:") %>
-          <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
-          <%= submit_tag "search", class: "btn btn-block" %>
+        <%= form_tag search_posts_path, method: :get do %>
+          <%= grouped_collection_select(nil, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name") %>
+          <%= grouped_collection_select(:course_id, :name, Major.all, :courses, :name, :id, :name, prompt: "Course name") %>
+          <%= text_field_tag :title, nil, placeholder: "e.g. java, theory, etc..." %>
+          <%= submit_tag "Search", name: nil %>
         <% end %>
       </div>
     </div>

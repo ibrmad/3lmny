@@ -3,6 +3,21 @@
     <div class="post">
       <div class="title"><%= link_to @post.title, post_path(@post) %></div>
       <div class="info flex-center-start">
+        <div class="votes flex-center-around">
+          <%= link_to upvote_post_path(@post), method: :patch, remote: true, class: "upvote vote-box" do %>
+            <svg class="icon-chevron-down upvote-icon sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+            <span id="vote_up_<%= @post.id %>"><%= @post.get_upvotes.size %></span>
+          <% end %>
+          <div id="vote_avg_<%= @post.id %>" class="vote-avg vote-box">
+            <%= @post.post_votes %>
+          </div>
+          <%= link_to downvote_post_path(@post), method: :patch, remote: true, class: "downvote vote-box" do %>
+            <span id="vote_down_<%= @post.id %>">
+              <%= @post.get_downvotes.size %>
+            </span>
+            <svg class="icon-chevron-down sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+          <% end %>
+        </div>
         <div class="username info-element">
           <%= image_tag (@post.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
           <%= link_to @post.user.username, user_profile_path(@post.user.username) %>
@@ -17,7 +32,7 @@
         </div>
         <div class="comments info-element">
           <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
-          23
+          <%= @post.comments.count %>
         </div>
           <% if @post.user == current_user %>
             <%= link_to edit_post_path(@post), class: "edit info-element" do %>
@@ -35,16 +50,16 @@
       </div>
     </div>
   </div>
-  <div class="white-box add-comment">
-    <h3>Comments</h3>
-    <%= form_for [@post, Comment.new] do |f| %>
-    <%= f.trix_editor :content, placeholder: "Add a comment", class: "new-comment" %><br/>
-    <%= f.submit "Add Comment", class: "btn" %>
-    <% end %>
-  </div>
-  <div class="white-box add-comment">
-    <ul>
+  <% if user_signed_in? %>
+    <div class="white-box add-comment">
+      <h3>Comments</h3>
+      <%= form_for [@post, Comment.new] do |f| %>
+      <%= f.trix_editor :content, placeholder: "Add a comment", class: "new-comment" %><br/>
+      <%= f.submit "Add Comment", class: "btn" %>
+      <% end %>
+    </div>
+  <% end %>
+    <ul class="comment-tree">
       <%= render(partial: 'comments/comment', collection: @post.comments) %>
     </ul>
-  </div>
 </div>

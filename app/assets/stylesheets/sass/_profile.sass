@@ -1,5 +1,5 @@
 .profile
-  color: $secondary-text-color
+  color: $text-color
   .active
     border-bottom-color: $primary-color
     color: #b6dce2
@@ -23,8 +23,10 @@
   padding: 2em
 .user-single-post
   border-radius: 5px
-  background: lighten($accent-color, 3%)
-  border: 1px solid $divider-color
+  background: lighten($divider-color, 2%)
+  border: 1px solid darken($divider-color, 3%)
+  .title
+    border-bottom: 1px solid darken($divider-color, 3%) !important
 .profile-tabs
   border-bottom: 1px solid $divider-color
   .tab

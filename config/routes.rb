@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   resources :posts do
     resources :comments
+    member do
+      patch 'upvote', to: 'posts#upvote'
+      patch 'downvote', to: 'posts#downvote'
+    end
   end
+
   resources :comments do
     resources :comments
   end
-
-  resources :discusses
   resources :courses
   resources :majors
   resources :faculties

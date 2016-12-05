@@ -1,12 +1,9 @@
 module ApplicationHelper
-  def controller?(*controller)
-    controller.include?(params[:controller])
-  end
-  def active_tab
-    if controller? :posts
-      " active"
-    elsif controller? :documents
-      " active"
+  def active(current)
+    if controller_name == "posts" and current == "posts"
+      " active-sidenav"
+    elsif controller_name == "documents" and current == "documents"
+      " active-sidenav"
     else
       ""
     end

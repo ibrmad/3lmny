@@ -1,3 +1,33 @@
 .add-comment
-  margin: 2em 0
+  margin: 1.2em 0
   padding: 2em
+.comment-tree
+  padding: 0
+.comment-tree, ul
+  list-style-type: none
+  margin: 0
+  li
+    padding: .5em .5em .5em 0em
+    margin-bottom: .5em
+    .hidden-reply
+      // display: none
+      width: 100%
+      padding: 1em 2em
+.single-comment
+  width: 100%
+  .reply
+    cursor: pointer
+  .info-element
+    color: #999
+    a
+      color: #999
+.comment-content
+  padding: 1em 2em
+  word-wrap: break-word
+.comment-info
+  border-bottom: 1px solid darken($divider-color, 2%)
+.comment-feild
+  width: 100%
+  display: block
+  margin-bottom: .7em
+  resize: vertical

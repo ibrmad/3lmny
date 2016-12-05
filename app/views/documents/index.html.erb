@@ -17,7 +17,7 @@
               </div>
               <div class="category info-element">
                 <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-                <%= document.course.name %>
+                <%= truncate(document.course.name, length: 32) %>
               </div>
           </div>
           <div class="download flex-center-end">
@@ -40,7 +40,12 @@
         SEARCH
       </div>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <%= form_tag documents_path, method: :get, class: "search-box flex-column" do |f| %>
+          <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
+          <%= grouped_collection_select(nil, :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:") %>
+          <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
+          <%= submit_tag "search", class: "btn btn-block" %>
+        <% end %>
       </div>
     </div>
     <div class="post white-box">

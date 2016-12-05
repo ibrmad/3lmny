@@ -1,0 +1,37 @@
+<div class="sidenav">
+  <div class="fixed-nav">
+      <div class="logo flex-center">
+        <%= link_to root_path do %>
+          <img src="/logo.svg" alt="" />
+        <% end %>
+      </div>
+      <div class="links-nav flex-column-center">
+        <%= link_to posts_path, class: "link" + active('posts') do %>
+          <svg class="icon-discussions"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-discussions"></use></svg>
+          <div>Discussions</div>
+        <% end %>
+        <%= link_to documents_path, class: "link" + active('documents') do %>
+          <svg class="icon-documents"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-documents"></use></svg>
+          <div>Documents</div>
+        <% end %>
+        <%= link_to root_path, class: "link" do %>
+          <svg class="icon-videos"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-videos"></use></svg>
+          <div>Videos</div>
+        <% end %>
+        <%= link_to root_path, class: "link" do %>
+          <svg class="icon-upcoming"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-upcoming"></use></svg>
+          <div>Upcoming</div>
+        <% end %>
+      </div>
+      <div class="adding-nav flex-column-center">
+        <%= link_to new_post_path, class: "link" do %>
+          <svg class="icon-add-discussion"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-discussion"></use></svg>
+          <div>Add discussion</div>
+        <% end %>
+        <%= link_to new_document_path, class: "link" do %>
+          <svg class="icon-add-document"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-document"></use></svg>
+          <div>Add document</div>
+        <% end %>
+      </div>
+  </div>
+</div>

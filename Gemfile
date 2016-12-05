@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'shrine', '~> 2.5'
 gem 'devise', '~> 4.2'
 gem 'trix', '~> 0.9.9'
+gem 'acts_as_votable', '~> 0.10.0'
+gem "autoprefixer-rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri

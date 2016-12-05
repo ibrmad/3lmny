@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name) %>
-  <%= f.grouped_collection_select :course_id, Major.all, :courses, :name, :id, :name %>
+  <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
+  <%= f.grouped_collection_select :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:" %>
   <%= f.text_field :title, placeholder: "Title describe the content" %>
   <%= f.trix_editor :content, placeholder: "Content of the discussion" %>
-  <%= f.submit "Post", class: "btn post_submit" %>
+  <%= f.submit "Publish", class: "btn post_submit" %>
 <% end %>

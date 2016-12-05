@@ -1,18 +1,5 @@
-
 <header id="Header">
   <div class="header-elements">
-    <div id="menu-btn">
-      <svg class="icon-menu"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-menu"></use></svg>
-    </div>
-    <%= link_to root_path, class: "logo" do %>
-    <img src="<%= asset_path 'logo.svg' %>" />
-    <% end %>
-    <div class="container menu flex-center-around">
-      <%= link_to 'Discussions', posts_path, class: 'element' + active_tab %>
-      <%= link_to 'Documents', documents_path, class: 'element' + active_tab  %>
-      <%= link_to 'Videos', root_path, class: 'element' + active_tab  %>
-      <%= link_to 'Announcements', root_path, class: 'element' + active_tab  %>
-    </div>
     <% if user_signed_in? %>
       <div class="side-elements">
         <div class="user-functions flex-center-around">
@@ -21,8 +8,9 @@
           <svg class="icon-mail function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-mail"></use></svg>
         </div>
         <div class="user-info flex-center-around">
-          <%= link_to current_user.username, user_profile_path(current_user.username), class: "user-name" %>
-          <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
+          <%= link_to user_profile_path(current_user.username) do %>
+            <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
+          <% end %>
           <svg class="icon-chevron-down sixteenth-px dropdown-btn" onclick="document.getElementById('user_settings').classList.toggle('collapsed');"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
         </div>
       </div>
@@ -36,8 +24,5 @@
         <%= link_to 'Register', register_path, class: "register header-btn" %>
       </div>
     <% end %>
-          </div>
-  <!-- <nav id="navigation-bar">
-
-  </nav> -->
+  </div>
 </header>
