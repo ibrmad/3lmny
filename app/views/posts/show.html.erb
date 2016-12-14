@@ -26,10 +26,10 @@
           <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
           <%= time_ago_in_words(@post.created_at) %>
         </div>
-        <div class="course info-element">
-          <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-          <%= @post.course.name %>
-        </div>
+        <%= link_to course_path(@post.course), class: "course info-element" do %>
+        <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+        <%= truncate(@post.course.name, length: 32) %>
+        <% end %>
         <div class="comments info-element">
           <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
           <%= @post.comments.count %>

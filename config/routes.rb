@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+
+
+  namespace :admin do
+    resources :users
+    resources :announcements
+    resources :comments
+    resources :courses
+    resources :documents
+    resources :faculties
+    resources :majors
+    resources :posts
+    resources :videos
+
+    root to: "posts#index"
+  end
+
+  resources :searches
+  resources :announcements
+  resources :videos
   resources :posts do
     resources :comments
     member do
@@ -10,7 +29,13 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
-  resources :courses
+  resources :courses do
+    member do
+      get 'posts', to: 'courses#posts'
+      get 'documents', to: 'courses#documents'
+      get 'videos', to: 'courses#videos'
+    end
+  end
   resources :majors
   resources :faculties
   resources :documents

@@ -10,14 +10,14 @@ class Post < ApplicationRecord
   def post_votes
     self.get_upvotes.size - self.get_downvotes.size
   end
-
-  def self.search(*params)
-    if params[1].present?
-      posts = Post.where(course_id: params[1])
-      posts = posts.where("title LIKE ?", "%#{params[0]}%") if params[0].present?
-    elsif params[0].present?
-      posts = Post.where("title LIKE ?", "%#{params[0]}%") if params[0].present?
+  def self.search(search)
+    posts = Post.where("title LIKE ?", "%#{search}%") if search.present?
+  end
+  def self.top_courses
+    sorted_courses = Hash.new
+    @courses = Course.all.each do |course|
+      sorted_courses[course] = course.posts.count
     end
-    posts
+    sorted_courses.sort_by {|_key, value| value}.take(10).reverse
   end
 end

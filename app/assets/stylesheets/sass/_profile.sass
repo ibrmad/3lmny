@@ -1,5 +1,12 @@
 .profile
   color: $text-color
+  .tabs
+    width: 100%
+    border-bottom: 1px solid $divider-color
+    .tab-link
+      width: 50%
+      &:first-of-type
+        border-right: 1px solid $divider-color
   .active
     border-bottom-color: $primary-color
     color: #b6dce2
@@ -18,9 +25,10 @@
     width: 50%
     margin-top: 5px
     text-align: center
-
 .user-posts
   padding: 2em
+.download-btn
+  margin-bottom: 3px
 .user-single-post
   border-radius: 5px
   background: lighten($divider-color, 2%)

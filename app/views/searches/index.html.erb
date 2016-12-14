@@ -1,0 +1,92 @@
+<div class="container flex-column">
+  <div class="posts flex-column">
+    <% @posts.each do |post| %>
+      <div class="white-box post">
+        <div class="title">
+          <%= link_to post.title, post_path(post) %>
+        </div>
+        <div class="info flex-center-start">
+          <div class="votes flex-center-around">
+            <%= link_to upvote_post_path(post), method: :patch, remote: true, class: "upvote vote-box" do %>
+            <svg class="icon-chevron-down upvote-icon sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+            <% end %>
+            <div id="vote_avg_<%= post.id %>" class="vote-avg vote-box">
+              <%= post.post_votes %>
+            </div>
+            <%= link_to downvote_post_path(post), method: :patch, remote: true, class: "downvote vote-box" do %>
+            <svg class="icon-chevron-down sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+            <% end %>
+          </div>
+          <div class="username info-element">
+            <%= image_tag (post.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= link_to post.user.username, user_profile_path(post.user.username) %>
+          </div>
+          <div class="time-ago info-element">
+            <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+            <%= time_ago_in_words(post.created_at) %>
+          </div>
+          <div class="category info-element">
+            <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+            <%= truncate(post.course.name, length: 32) %>
+          </div>
+          <div class="comments info-element">
+            <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
+            <%= post.comments.count %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="documents">
+    <% @documents.each do |document| %>
+      <div class="document white-box">
+        <div class="extension-type">
+          <%= extension_type(document.document.mime_type) %>
+        </div>
+        <div class="document-info flex-column">
+          <div class="title">
+            <%= document.title %>
+          </div>
+          <div class="username info-element">
+            <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= link_to document.user.username, user_profile_path(document.user.username) %>
+          </div>
+          <div class="time-ago info-element">
+            <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+            <%= time_ago_in_words(document.created_at) %>
+          </div>
+          <div class="category info-element">
+            <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+            <%= truncate(document.course.name, length: 32) %>
+          </div>
+        </div>
+        <%= link_to document.document_url, class: "btn download-btn btn-block" do %>
+        <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="videos container">
+    <% @videos.each do |video| %>
+      <div class="video" style="background-image:url(https://i1.ytimg.com/vi/<%= video.youtube_video_id %>/0.jpg)">
+        <%= link_to video_path(video), class: "title" do %>
+          <%= video.title %>
+        <% end %>
+        <div class="status">
+          <%= video.status %>
+        </div>
+        <div class="time">
+          <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+          <%= video.created_at.strftime("%b %d, %Y") %>
+        </div>
+        <%= link_to course_path(video.course), class: "course" do %>
+          <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+          <%= truncate(video.course.name, length: 32) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

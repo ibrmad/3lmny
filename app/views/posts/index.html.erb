@@ -25,10 +25,10 @@
             <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
             <%= time_ago_in_words(post.created_at) %>
           </div>
-          <div class="category info-element">
-            <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-            <%= truncate(post.course.name, length: 32) %>
-          </div>
+          <%= link_to course_path(post.course), class: "course info-element" do %>
+          <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+          <%= truncate(post.course.name, length: 32) %>
+          <% end %>
           <div class="comments info-element">
             <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
             <%= post.comments.count %>
@@ -38,25 +38,29 @@
     <% end %>
   </div>
   <div class="posts-sidebar">
-    <div class="post white-box">
-      <div class="title">
-        SEARCH
-      </div>
-      <div class="content">
-        <%= form_tag posts_path, method: :get, class: "search-box flex-column" do |f| %>
-          <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
-          <%= grouped_collection_select(nil, :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:") %>
-          <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
-          <%= submit_tag "search", class: "btn btn-block" %>
+    <div class="posts-functions flex-column">
+      <%= form_tag posts_path, method: :get, class: "posts-search search-form flex-start" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "search in posts", class: "search-field" %>
+        <%= button_tag type: "submit", class: "search-btn" do %>
+          <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
         <% end %>
-      </div>
+      <% end %>
+      <%= link_to new_post_path, class: "add-new-post add-new-btn" do %>
+        <svg class="icon-add-discussion"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-discussion"></use></svg>
+      <% end %>
     </div>
     <div class="post white-box">
       <div class="title">
-        LATEST COMMENTS
+        TOP COURSES
       </div>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="top-courses flex-column">
+          <% @top_courses.each do |course, _| %>
+            <%= link_to course_path(course), class: "top-course" do %>
+              <%= course.name  %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="post white-box">

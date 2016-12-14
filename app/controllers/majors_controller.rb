@@ -1,6 +1,8 @@
 class MajorsController < ApplicationController
   before_action :set_major, only: [:show, :edit, :update, :destroy]
   before_action :set_faculty, only: [:edit, :update, :new]
+  before_action :authenticate_user!
+  before_action :authenticate_admin, except: [:index, :show]
 
   def index
     @majors = Major.all

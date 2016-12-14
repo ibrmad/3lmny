@@ -26,13 +26,33 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="fullApp">
-      <%= render 'layouts/sidenav' %>
-      <div id="mainContent">
-        <%= render 'layouts/header' %>
-        <div id="Content" class="container">
-          <%= yield %>
+    <div id="mainContent">
+      <input type="checkbox" name="checkbox" id="menu_toggle" />
+      <label for="menu_toggle" id="toggle_label">
+        <svg class="icon-menu"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-menu"></use></svg>
+      </label>
+      <nav id="side_nav">
+      </nav>
+      <%= render 'layouts/header' %>
+      <% if user_signed_in? %>
+        <input type="checkbox" name="checkbox" id="user_settings_toggle" />
+        <label for="user_settings_toggle" id="user_settings_label">
+          <svg class="icon-chevron-down sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+        </label>
+        <div id="user_settings">
+          <%= link_to 'Edit profile', edit_user_path(current_user) %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </div>
+        <input type="checkbox" name="checkbox" id="search_toggle" />
+        <label for="search_toggle" id="search_toggle_label">
+          <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
+        </label>
+        <%= form_tag searches_path, method: :get, class: "search-box flex-column" do |f| %>
+          <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
+        <% end %>
+      <% end %>
+      <div id="Content" class="container">
+        <%= yield %>
       </div>
     </div>
   </body>

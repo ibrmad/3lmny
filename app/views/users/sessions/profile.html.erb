@@ -11,32 +11,62 @@
       <%= @user.bio %>
     </div>
   </div>
-  <div class="profile-tabs flex-center-around">
-    <div class="tab active">My Discussions</div>
-    <div class="tab">My Documents</div>
-    <div class="tab">My Comments</div>
-  </div>
-  <div class="user-posts">
-    <% @user.posts.each do |post| %>
-      <div class="post user-single-post">
-        <div class="title">
-          <%= link_to post.title, post_path(post) %>
+
+
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="tab-1">My Discussions</li>
+    <li class="tab-link" data-tab="tab-2">My Documents</li>
+  </ul>
+
+	<div id="tab-1" class="tab-content current">
+    <div class="user-posts">
+      <% @posts.each do |post| %>
+        <div class="post user-single-post">
+          <div class="title">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+          <div class="info flex-center-start">
+              <div class="time-ago info-element">
+                <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+                <%= time_ago_in_words(post.created_at) %>
+              </div>
+              <%= link_to course_path(post.course), class: "course info-element" do %>
+              <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+              <%= truncate(post.course.name, length: 32) %>
+              <% end %>
+              <div class="comments info-element">
+                <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
+                <%= post.comments.count %>
+              </div>
+          </div>
         </div>
-        <div class="info flex-center-start">
+      <% end %>
+    </div>
+  </div>
+
+	<div id="tab-2" class="tab-content">
+    <div class="user-posts">
+      <% @documents.each do |document| %>
+        <div class="post user-single-post">
+          <div class="title">
+            <%= document.title %>
+          </div>
+          <div class="info flex-center-start">
             <div class="time-ago info-element">
               <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
-              <%= time_ago_in_words(post.created_at) %>
+              <%= time_ago_in_words(document.created_at) %>
             </div>
-            <div class="course info-element">
-              <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-              <%= post.course.name %>
-            </div>
-            <div class="comments info-element">
-              <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>
-              23
-            </div>
+            <%= link_to course_path(document.course), class: "course info-element" do %>
+            <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+            <%= truncate(document.course.name, length: 32) %>
+            <% end %>
+            <%= link_to document.document_url, class: "download-btn info-element" do %>
+            <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
+            Download
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

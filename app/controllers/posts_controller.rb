@@ -4,12 +4,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.all
-    if params[:search] || params[:course_id]
-      @posts = Post.search(params[:search], params[:course_id]).order("created_at DESC")
+    if params[:search] and not params[:search].empty?
+      @posts = Post.search(params[:search]).order("created_at DESC")
     else
       @posts = Post.all.order('created_at DESC')
     end
+    @top_courses = Post.top_courses
   end
 
   def show

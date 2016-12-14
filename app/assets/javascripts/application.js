@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+//= require selectize
 //= require jquery_ujs
 //= require trix
 //= require turbolinks
@@ -21,8 +23,21 @@ $( document ).on('turbolinks:load', function() {
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     $('#avatar_label').text(label);
   });
-  $('#menu-btn').click(function () {
-    $('#hiddenMenu').toggleClass('toggle-menu');
-    $('#mainContent').toggleClass('toggle-content');
+
+  $('#post_course_id').selectize();
+  $('#document_course_id').selectize();
+  $('#_major_id').selectize();
+
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  });
+  $('#_major_id').on('change', function() {
+    $('#select_major').submit();
   });
 });

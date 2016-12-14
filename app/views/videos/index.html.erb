@@ -1,0 +1,29 @@
+<div class="videos-functions container flex-start">
+  <%= form_tag videos_path, method: :get, class: "videos-search search-form" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "search in videos", class: "search-field" %>
+    <%= button_tag type: "submit", class: "search-btn" do %>
+      <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="videos container">
+  <% @videos.each do |video| %>
+    <div class="video" style="background-image:url(https://i1.ytimg.com/vi/<%= video.youtube_video_id %>/0.jpg)">
+      <%= link_to video_path(video), class: "title" do %>
+        <%= video.title %>
+      <% end %>
+      <div class="status">
+        <%= video.status %>
+      </div>
+      <div class="time">
+        <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+        <%= video.created_at.strftime("%b %d, %Y") %>
+      </div>
+      <%= link_to course_path(video.course), class: "course" do %>
+        <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+        <%= truncate(video.course.name, length: 32) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

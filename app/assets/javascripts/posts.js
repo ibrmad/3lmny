@@ -19,7 +19,6 @@ $( document ).on('turbolinks:load', function() {
       $('#_course_id').empty();
     }
   });
-
 });
 function reply(id){
   $(document).ready(function(){

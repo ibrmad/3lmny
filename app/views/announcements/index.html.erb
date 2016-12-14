@@ -1,0 +1,13 @@
+<div class="announcements container">
+  <% @announcements.each do |announcement| %>
+    <%= link_to announcement_path(announcement), style: "background-image:url(#{announcement.image_url});", class: "announcement" do %>
+      <div class="title">
+        <%= announcement.title %>
+      </div>
+      <div class="date">
+        <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+        <%= announcement.date.strftime("%b %e, %l:%M %p") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

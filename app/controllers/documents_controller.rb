@@ -4,15 +4,15 @@ class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @documents = Document.all
-    if params[:search] || params[:course_id]
-      @documents = Document.search(params[:search], params[:course_id]).order("created_at DESC")
+    if params[:search] and not params[:search].empty?
+      @documents = Document.search(params[:search]).order("created_at DESC")
     else
       @documents = Document.all.order('created_at DESC')
     end
   end
 
   def show
+    redirect_to :documents
   end
 
   def new
@@ -25,18 +25,16 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.user = current_user
-    @document.course_id = params[:course_id]
     if @document.save
-      redirect_to @document
+      redirect_to :documents
     else
       render :new
     end
   end
 
   def update
-    @document.course_id = params[:course_id]
     if @document.update(document_params)
-      redirect_to @document
+      redirect_to :documents
     else
       render :edit
     end
@@ -55,6 +53,6 @@ class DocumentsController < ApplicationController
       @courses = Course.all.map{|c| [ c.name, c.id ] }
     end
     def document_params
-      params.require(:document).permit(:title, :document)
+      params.require(:document).permit(:title, :document, :course_id)
     end
 end

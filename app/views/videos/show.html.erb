@@ -1,0 +1,56 @@
+<div class="single-video flex-column-center">
+  <iframe id="ytplayer" type="text/html" width="800" height="460" src="https://www.youtube.com/embed/<%= @video.youtube_video_id %>?autoplay=0" frameborder="0"></iframe>
+  <div class="title-status video-block white-box">
+    <div class="title">
+      <%= @video.title %>
+    </div>
+    <div class="status">
+      <%= @video.status %>
+    </div>
+  </div>
+  <div class="date-course video-block white-box">
+    <div class="date">
+      <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+      <%= @video.created_at.strftime("%b %d, %Y") %>
+    </div>
+    <%= link_to course_path(@video.course), class: "course" do %>
+    <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+    <%= truncate(@video.course.name, length: 32) %>
+    <% end %>
+    <% if @video.user == current_user %>
+      <%= link_to edit_video_path(@video), class: "edit" do %>
+        <svg class="icon-create sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-create"></use></svg>
+        Edit
+      <% end %>
+      <%= link_to @video, :method => :delete, data: { confirm:  "Are you sure?"}, class: "delete" do %>
+        <svg class="icon-delete sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-delete"></use></svg>
+        Delete
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="realted-video white-box">
+    <h1>Realted Videos</h1>
+    <div class="videos">
+      <% @realted_videos.each do |video| %>
+      <div class="video white-box">
+        <%= link_to video_path(video) do %>
+        <div class="video-img">
+          <%= image_tag "https://i1.ytimg.com/vi/#{video.youtube_video_id}/hqdefault.jpg" %>
+        </div>
+        <div class="title">
+          <%= video.title %>
+        </div>
+        <div class="status">
+          <%= video.status %>
+        </div>
+        <div class="time">
+          <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+          <%= video.created_at.strftime("%b %d, %Y") %>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div>

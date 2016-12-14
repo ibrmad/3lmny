@@ -1,0 +1,69 @@
+.announcements
+  display: flex
+  flex-wrap: wrap
+  .announcement
+    width: calc(33.33333% - 2em)
+    min-width: 220px
+    margin: 0 1em 2em 1em
+    height: 300px
+    background-size: cover
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background: rgba(75, 85, 95, 0.71)
+      background: linear-gradient(rgba(40, 53, 66, 0.1), rgba(5, 10, 17, 0.6))
+    .title
+      font-family: $headline-font
+      font-size: 1.3em
+      color: white
+      padding: .5em
+      position: absolute
+      bottom: 10px
+      left: 10px
+      right: 10px
+      z-index: 5
+    .date
+      position: absolute
+      top: 10px
+      right: 10px
+      padding: .4em 1em .5em 1em
+      color: $accent-color
+      border-radius: 5px
+      z-index: 5
+      background: white
+      svg
+        margin-bottom: -4px
+        width: 20px !important
+        height: 20px !important
+.single-announcement
+  max-width: 1000px
+  margin: 0 auto
+  .announcement-img
+    width: 100%
+    min-width: 400px
+    height: 400px
+    background-size: cover
+    position: relative
+    .date
+      position: absolute
+      bottom: 20px
+      right: 20px
+      font-size: 1.3em
+      font-family: $headline-font
+      padding: .4em 1em .5em 1em
+      color: $accent-color
+      border-radius: 5px
+      z-index: 5
+      background: white
+  .title
+    padding: 1em
+    font-family: $headline-font
+    font-size: 1.5em
+    color: #777
+  .content
+    padding: 1em

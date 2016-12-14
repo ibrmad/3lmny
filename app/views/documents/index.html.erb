@@ -1,68 +1,42 @@
-<div class="container flex-start">
-  <div class="posts flex-column">
+
+<div class="documents-functions container flex-start">
+  <%= form_tag documents_path, method: :get, class: "documents-search search-form" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "search in documents", class: "search-field" %>
+    <%= button_tag type: "submit", class: "search-btn" do %>
+      <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
+    <% end %>
+  <% end %>
+  <%= link_to new_document_path, class: "add-new-document add-new-btn" do %>
+    <svg class="icon-add-document"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-document"></use></svg>
+  <% end %>
+</div>
+
+  <div class="documents">
     <% @documents.each do |document| %>
-      <div class="white-box document">
-        <div class="title">
-          <%= document.title %>
+      <div class="document white-box">
+        <div class="extension-type">
+          <%= extension_type(document.document.mime_type) %>
         </div>
-        <div class="document-info">
-          <div class="info flex-center-start">
-              <div class="username info-element">
-                <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
-                <%= link_to document.user.username, user_profile_path(document.user.username) %>
-              </div>
-              <div class="time-ago info-element">
-                <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
-                <%= time_ago_in_words(document.created_at) %>
-              </div>
-              <div class="category info-element">
-                <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-                <%= truncate(document.course.name, length: 32) %>
-              </div>
+        <div class="document-info flex-column">
+          <div class="title">
+            <%= document.title %>
           </div>
-          <div class="download flex-center-end">
-            <div class="doc-info flex-center-start">
-              <svg class="icon-document sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-document"></use></svg>
-              <%= " " + Rack::Mime::MIME_TYPES.invert[document.document.mime_type].sub(/./, '').upcase + " | " %>
-              <%= (document.document.size / 1024).round(2) %> KB
-            </div>
-            <%= link_to document.document_url, class: "btn" do %>
-              <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
-            <% end %>
+          <div class="username info-element">
+            <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= link_to document.user.username, user_profile_path(document.user.username) %>
           </div>
+          <div class="time-ago info-element">
+            <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+            <%= time_ago_in_words(document.created_at) %>
+          </div>
+          <%= link_to course_path(document.course), class: "course info-element" do %>
+          <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
+          <%= truncate(document.course.name, length: 32) %>
+          <% end %>
         </div>
+        <%= link_to document.document_url, class: "btn download-btn btn-block" do %>
+        <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
+        <% end %>
       </div>
     <% end %>
   </div>
-  <div class="posts-sidebar">
-    <div class="post white-box">
-      <div class="title">
-        SEARCH
-      </div>
-      <div class="content">
-        <%= form_tag documents_path, method: :get, class: "search-box flex-column" do |f| %>
-          <%= grouped_collection_select(:major, :name, Faculty.all, :majors, :name, :id, :name, prompt: "Major name:") %>
-          <%= grouped_collection_select(nil, :course_id, Major.all, :courses, :name, :id, :name, prompt: "Course name:") %>
-          <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
-          <%= submit_tag "search", class: "btn btn-block" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="post white-box">
-      <div class="title">
-        LATEST COMMENTS
-      </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
-    </div>
-    <div class="post white-box">
-      <div class="title">
-        SEARCH
-      </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
-    </div>
-  </div>
-</div>

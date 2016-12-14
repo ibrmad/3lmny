@@ -1,23 +1,29 @@
 #Header
   width: 100%
-  height: 60px
+  height: 75px
   font-family: $content-font
   background: $primary-color
+  background-image: url(/header-pattern.svg)
   background-size: 150px
+  background-position: 20px
+  padding: 0 2.2em 0em 1em
   color: white
-  margin-bottom: 2em
-  display: inline-flex
-  flex-direction: row-reverse
+  display: flex
+  position: fixed
+  z-index: 998
+  box-shadow: 0 2px 5px #ccc
 .header-elements
   display: flex
-  height: 60px
-  width: auto
+  height: 75px
+  width: 100%
   justify-content: space-between
   align-items: center
   padding: 0 1em
   .logo
-    width: 100px
-    height: 40px
+    width: 120px
+    height: 50px
+    img
+      margin-top: -2px
 .side-elements
   display: flex
   justify-content: space-between
@@ -25,34 +31,19 @@
     .function
       cursor: pointer
       margin-right: 10px
+    .icon-search
+      visibility: hidden
     .add-post
       width: 22px
       height: 22px
       margin-right: 10px
       color: white
-  .user-info
-    margin-right: 1em
   .user-avatar
     border-radius: 100%
     border: 2px solid #50c8e9
     margin: 0 5px
 .dropdown-btn
   cursor: pointer
-#user_settings
-  right: 30px
-.dropdown-list
-  width: 200px
-  background: white
-  position: absolute
-  top: 43px
-  display: flex
-  flex-direction: column
-  a
-    color: $accent-color
-    height: 40px
-    padding: 10px
-    border-bottom: 1px solid $divider-color
-
 
 .header-btn
   color: white
@@ -64,3 +55,18 @@
   background: white
   border-radius: 3px
   color: $primary-color
+
+nav
+  height: 100%
+  .link
+    color: white
+    display: flex
+    align-items: center
+    padding: 0 1em
+    height: 100%
+    font-family: $headline-font
+    font-size: 1.15em
+    transition: all 200ms ease-in-out
+    &:hover
+      background: #fff
+      color: #00b9f1

@@ -1,0 +1,68 @@
+.course-show
+  margin-bottom: 1em
+  padding: .7em 1em
+  font-family: $headline-font
+  font-size: 1.3em
+  color: #999
+  border-left: 5px solid $accent-color
+#course_name
+  margin-bottom: 1em
+  padding: .7em 1em
+  font-family: $headline-font
+  font-size: 1.3em
+  color: #999
+  border-left: 5px solid $accent-color
+  width: 100%
+#major_name
+  background: white
+  border-left: 5px solid $primary-color
+  font-family: $headline-font
+  font-size: 1.3em
+  padding: 1em
+  margin: 1em 0
+  color: $primary-color
+.line
+  height: 1px
+  background: #ddd
+  width: 100%
+ul.tabs
+  margin: 0px
+  padding: 0px
+  list-style: none
+  width: 100%
+  background: #fff
+  display: flex
+  margin-bottom: 1.2em
+  height: 50px
+  justify-content: center
+  li
+    color: #999
+    cursor: pointer
+    width: 33.33333%
+    height: 50px
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 200ms ease-in-out
+    &:hover
+      background: $accent-color
+      color: #fff
+  li.current
+    border-bottom: 5px solid $accent-color
+.tab-content
+  display: none
+  .posts
+    width: 100%
+.tab-content.current
+  display: inherit
+#select_major
+  .selectize-input
+    background: white
+    font-family: $headline-font
+    border: 1px solid #e6e6e6
+    height: 50px
+    padding: 1em
+    #_major_id-selectized
+      font-size: 1.4em
+      width: 150px !important
+      font-family: $headline-font

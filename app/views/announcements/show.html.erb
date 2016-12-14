@@ -1,0 +1,13 @@
+<div class="single-announcement white-box">
+  <div class="announcement-img" style="background-image:url(<%= @announcement.image_url %>);">
+    <div class="date">
+      <%= @announcement.date.strftime("%b %e, %l:%M %p") %>
+    </div>
+  </div>
+  <div class="title">
+    <%= @announcement.title %>
+  </div>
+  <div class="content">
+    <%= @announcement.content %>
+  </div>
+</div>

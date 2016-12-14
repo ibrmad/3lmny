@@ -1,0 +1,103 @@
+.videos
+  display: flex
+  flex-wrap: wrap
+.video
+  width: calc(33.33333% - 2em)
+  min-width: 300px
+  height: 300px
+  position: relative
+  margin: 0 1em 2em 1em
+  background-size: 550px
+  background-position: center center
+  &::after
+    content: ""
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: rgba(75, 85, 95, 0.71)
+    background: linear-gradient(rgba(40, 53, 66, 0.29), rgba(5, 10, 17, 0.81))
+  .title
+    position: absolute
+    bottom: 40px
+    left: 10px
+    font-size: 1.3em
+    font-family: $headline-font
+    color: white
+    padding: .5em .5em 0em 0em
+    z-index: 5
+  .time
+    position: absolute
+    bottom: 10px
+    left: 10px
+    font-size: .8em
+    color: white
+    z-index: 5
+    svg
+      margin-bottom: -3px
+  .course
+    position: absolute
+    bottom: 10px
+    left: 110px
+    font-size: .8em
+    color: white
+    z-index: 5
+    svg
+      margin-bottom: -3px
+  .status
+    position: absolute
+    bottom: 10px
+    right: 10px
+    font-size: .8em
+    color: #fff
+    padding: .3em .5em
+    border-radius: 5px
+    border: 1px solid #fff
+    z-index: 5
+    // box-shadow: inset 0 -10px 300px rgba(0,0,0,1)
+.single-video
+  #ytplayer
+    background: #4B555F
+.video-block
+  padding: 1em
+  width: 100%
+  max-width: 800px
+  margin-top: 1.2em
+  display: flex
+.title-status
+  justify-content: space-between
+  .title
+    font-family: $headline-font
+    font-size: 1.2em
+    width: calc(100% - 120px)
+  .status
+    border: 1px solid #bbb
+    border-radius: 5px
+    color: #bbb
+    padding: .2em 1em
+    max-width: 120px
+    height: 27px
+.date-course
+  color: #aaa
+  svg
+    margin-bottom: -2px
+  .date, a, .course
+    margin-right: 1.2em
+    color: #aaa
+.realted-video
+  margin-top: 1.2em
+  max-width: 800px
+  width: 100%
+  h1
+    margin: 1em
+  .video
+    width: 260px
+    height: 180px
+    .title
+      font-size: 1.1em
+.videos-functions
+  margin-bottom: 2em
+.videos-search
+  margin: 0 auto
+  padding: 0 1.2em

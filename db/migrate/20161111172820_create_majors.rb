@@ -3,6 +3,7 @@ class CreateMajors < ActiveRecord::Migration[5.0]
     create_table :majors do |t|
       t.string :name
       t.integer :faculty_id
+      t.integer :user_id
 
       t.timestamps
     end
