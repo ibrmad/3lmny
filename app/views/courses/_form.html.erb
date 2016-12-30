@@ -1,8 +1,6 @@
 <%= form_for(course) do |f| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
       <ul>
       <% course.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,16 +9,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.grouped_collection_select :major_id, Faculty.all, :majors, :name, :id, :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.text_field :name, placeholder: "course name" %><br>
+    <%= f.grouped_collection_select :major_id, Faculty.all, :majors, :name, :id, :name, prompt: "major name:" %>
+    <%= f.submit "Add", class: "btn" %>
 <% end %>

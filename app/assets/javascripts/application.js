@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require selectize
 //= require jquery_ujs
 //= require trix
@@ -24,9 +23,18 @@ $( document ).on('turbolinks:load', function() {
     $('#avatar_label').text(label);
   });
 
-  $('#post_course_id').selectize();
-  $('#document_course_id').selectize();
-  $('#_major_id').selectize();
+  $('#post_course_id').selectize({
+    openOnFocus: false
+  });
+  $('#document_course_id').selectize({
+    openOnFocus: false
+  });
+  $('#video_course_id').selectize({
+    openOnFocus: false
+  });
+  $('#_major_id').selectize({
+    openOnFocus: false
+  });
 
   $('ul.tabs li').click(function(){
     var tab_id = $(this).attr('data-tab');
@@ -39,5 +47,21 @@ $( document ).on('turbolinks:load', function() {
   });
   $('#_major_id').on('change', function() {
     $('#select_major').submit();
+  });
+  $('#show_notifications').click( function(event){
+    $('#user_settings').hide();
+    event.stopPropagation();
+    $('#notifications_toggle').toggle();
+  });
+  $(document).click( function(){
+      $('#notifications_toggle').hide();
+  });
+  $('#show_settings').click( function(event){
+    $('#notifications_toggle').hide();
+    event.stopPropagation();
+    $('#user_settings').toggle();
+  });
+  $(document).click( function(){
+      $('#user_settings').hide();
   });
 });

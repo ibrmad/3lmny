@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :set_courses, only: [:edit, :update, :new]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     if params[:search] and not params[:search].empty?
-      @posts = Post.search(params[:search]).order("created_at DESC")
+      @posts = Post.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 15)
     else
-      @posts = Post.all.order('created_at DESC')
+      @posts = Post.order('created_at DESC').paginate(page: params[:page], per_page: 15)
     end
     @top_courses = Post.top_courses
+    @announcement = Announcement.order("date ASC").first
   end
 
   def show
+    @comments = Comment.where(post: @post)
   end
 
   def new
@@ -67,11 +68,6 @@ class PostsController < ApplicationController
   private
     def set_post
       @post = Post.find(params[:id])
-    end
-    def set_courses
-      @faculties = Faculty.all.map{|c| [ c.name, c.id ] }
-      @majors = Major.all.map{|c| [ c.name, c.id , c.faculty ] }
-      @courses = Course.all.map{|c| [ c.name, c.id, c.major ] }
     end
     def post_params
       params.require(:post).permit(:title, :content, :course_id)

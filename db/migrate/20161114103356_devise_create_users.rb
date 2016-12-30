@@ -35,9 +35,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string  :username
       t.string  :first_name
       t.string  :last_name
+      t.string  :gender, limit: 1, default: "u"
       t.text    :bio
       t.text    :image_data
-
       t.timestamps null: false
     end
 

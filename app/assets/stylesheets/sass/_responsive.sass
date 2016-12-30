@@ -1,3 +1,62 @@
 @media (min-width: 1440px)
   .container
     max-width: 1440px
+@media (min-width: 770px)
+  .document
+    &:hover
+      .hidden-doc-info
+        display: block
+@media (max-width: 1000px)
+  .container
+    padding: 0 .5em
+  #side_nav, #toggle_label
+    display: block
+    visibility: visible
+  .header-nav,  #Header .side-elements, #user_settings_label, #search_toggle_label, .search-box, .posts-sidebar
+    display: none
+    visibility: hidden
+  .header-elements
+    justify-content: center
+    align-items: center
+  .posts
+    width: 100%
+    margin-right: 0
+  .posts-search-res
+    display: flex
+@media (max-width: 770px)
+  .posts .info
+    flex-wrap: wrap
+    flex-direction: column
+    .info-element
+      width: 100%
+    .votes
+      border: none
+      display: flex
+      justify-content: center
+      align-items: center
+  .download-btn-hidden
+    display: block
+    visibility: visible
+
+@media (max-width: 650px)
+  .documents-functions
+    flex-direction: column
+    .documents-search
+      width: 100%
+      margin-bottom: 1em
+      .search-field
+        width: calc(100% - 50px)
+      .search-btn
+        width: 50px
+    .add-new-document
+      display: none
+  .document
+    width: 100%
+    max-width: 400px
+    margin: 0 .5em 2em .5em
+  .videos-search
+    width: 100%
+    .search-btn
+      width: 50px
+    .search-field
+      width: 100%

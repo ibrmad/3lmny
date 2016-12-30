@@ -24,13 +24,21 @@
       <div class="side-elements">
         <div class="user-functions flex-center-around">
           <svg class="icon-search function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
-          <svg class="icon-notifications function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
-          <svg class="icon-mail function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-mail"></use></svg>
+          <div class="icon-notification function">
+            <svg class="icon-notifications" id="show_notifications"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
+            <span id="unread_count"></span>
+          </div>
+          <div class="notifications-box" id="notifications_toggle"></div>
         </div>
         <div class="user-info flex-center-around">
           <%= link_to user_profile_path(current_user.username) do %>
-            <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
+            <img src="<%= current_user.image_url or avatar_for_gender(current_user) %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
           <% end %>
+        </div>
+        <svg class="icon-chevron-down sixteenth-px function" id="show_settings"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
+        <div id="user_settings">
+          <%= link_to 'Edit profile', edit_user_path(current_user) %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </div>
       </div>
     <% else %>

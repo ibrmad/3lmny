@@ -11,7 +11,7 @@
   display: flex
   position: fixed
   z-index: 998
-  box-shadow: 0 2px 5px #ccc
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
 .header-elements
   display: flex
   height: 75px
@@ -27,20 +27,15 @@
 .side-elements
   display: flex
   justify-content: space-between
+  align-items: center
   .user-functions
     .function
       cursor: pointer
-      margin-right: 10px
     .icon-search
       visibility: hidden
-    .add-post
-      width: 22px
-      height: 22px
-      margin-right: 10px
-      color: white
   .user-avatar
     border-radius: 100%
-    border: 2px solid #50c8e9
+    border: 2px solid lighten($primary-color, 10%)
     margin: 0 5px
 .dropdown-btn
   cursor: pointer
@@ -65,8 +60,72 @@ nav
     padding: 0 1em
     height: 100%
     font-family: $headline-font
-    font-size: 1.15em
+    font-size: 1.2em
     transition: all 200ms ease-in-out
     &:hover
       background: #fff
-      color: #00b9f1
+      color: $primary-color
+.notifications-box
+  display: none
+  background: white
+  color: #999
+  position: fixed
+  top: 75px
+  right: 87px
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.15)
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    right: 20px
+    bottom: 100%
+    width: 0
+    height: 0
+    border-style: solid
+    border-color: transparent transparent #fff transparent
+    border-width: 10px
+  .notification
+    padding: 0.5em
+    border-bottom: 1px solid #eee
+    display: block
+    width: 100%
+    color: #777
+  p
+    padding: .5em
+.icon-notification
+  position: relative
+  #unread_count
+    position: absolute
+    bottom: 50%
+    right: 0
+    background: $accent-color
+    border-radius: 1px
+    padding: 0 3px
+    font-size: .85em
+    display: none
+#user_settings
+  display: none
+  background: white
+  position: fixed
+  top: 75px
+  right: 25px
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.15)
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    right: 20px
+    bottom: 100%
+    width: 0
+    height: 0
+    border-style: solid
+    border-color: transparent transparent #fff transparent
+    border-width: 10px
+  a
+    color: $accent-color
+    height: 40px
+    padding: 10px
+    display: block
+    min-width: 200px
+    width: 100%
+    border-bottom: 1px solid $divider-color

@@ -2,11 +2,9 @@ class Post < ApplicationRecord
   acts_as_votable
   belongs_to :user
   belongs_to :course
-  has_many :comments, as: :commentable
-
-  def course
-    @course = Course.find(self.course_id)
-  end
+  has_many :comments
+  has_many :users, through: :comments
+  validates :title, :content, :course_id, presence: true
   def post_votes
     self.get_upvotes.size - self.get_downvotes.size
   end

@@ -1,45 +1,46 @@
 .announcements
   display: flex
   flex-wrap: wrap
-  .announcement
-    width: calc(33.33333% - 2em)
-    min-width: 220px
-    margin: 0 1em 2em 1em
-    height: 300px
-    background-size: cover
-    position: relative
-    &::after
-      content: ""
-      position: absolute
-      top: 0
-      bottom: 0
-      left: 0
-      right: 0
-      background: rgba(75, 85, 95, 0.71)
-      background: linear-gradient(rgba(40, 53, 66, 0.1), rgba(5, 10, 17, 0.6))
-    .title
-      font-family: $headline-font
-      font-size: 1.3em
-      color: white
-      padding: .5em
-      position: absolute
-      bottom: 10px
-      left: 10px
-      right: 10px
-      z-index: 5
-    .date
-      position: absolute
-      top: 10px
-      right: 10px
-      padding: .4em 1em .5em 1em
-      color: $accent-color
-      border-radius: 5px
-      z-index: 5
-      background: white
-      svg
-        margin-bottom: -4px
-        width: 20px !important
-        height: 20px !important
+  justify-content: center
+.announcement
+  width: calc(33.33333% - 2em)
+  min-width: 300px
+  margin: 0 1em 2em 1em
+  height: 300px
+  background-size: cover
+  position: relative
+  &::after
+    content: ""
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: rgba(75, 85, 95, 0.71)
+    background: linear-gradient(rgba(40, 53, 66, 0.1), rgba(5, 10, 17, 0.6))
+  .title
+    font-family: $headline-font
+    font-size: 1.3em
+    color: white
+    padding: .5em
+    position: absolute
+    bottom: 10px
+    left: 10px
+    right: 10px
+    z-index: 5
+  .date
+    position: absolute
+    top: 10px
+    right: 10px
+    padding: .4em 1em .5em 1em
+    color: $primary-color
+    border-radius: 5px
+    z-index: 5
+    background: white
+    svg
+      margin-bottom: -4px
+      width: 20px !important
+      height: 20px !important
 .single-announcement
   max-width: 1000px
   margin: 0 auto
@@ -67,3 +68,20 @@
     color: #777
   .content
     padding: 1em
+
+#new_announcement
+  display: flex
+  flex-direction: column
+  .date
+    display: flex
+    flex-wrap: wrap
+#announcement_date_1i
+  width: 33.3333%
+#announcement_date_2i, #announcement_date_3i
+  width: 33.3333%
+#announcement_date_4i, #announcement_date_5i
+  width: 50%
+.new-announcement
+  padding: 2em
+  width: 50%
+  margin: 0 auto

@@ -14,14 +14,12 @@ gem 'devise', '~> 4.2'
 gem 'trix', '~> 0.9.9'
 gem 'acts_as_votable', '~> 0.10.0'
 gem "autoprefixer-rails"
-gem 'mimemagic', '~> 0.3.2'
-gem 'jquery-ui-rails'
 gem 'selectize-rails', '~> 0.12.4'
-gem 'administrate', '~> 0.3.0'
-gem 'bourbon', '~> 4.2', '>= 4.2.7'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'railroady', '~> 1.5', '>= 1.5.2'
 end
 
 group :development do

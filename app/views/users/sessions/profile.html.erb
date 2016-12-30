@@ -1,6 +1,6 @@
 <div class="profile white-box">
   <div class="profile-user-info flex-column-center">
-    <%= image_tag (@user.image_url or asset_path 'default-avatar.png'), width: "150px", height: "150px",  class: "user-avatar" %>
+    <%= image_tag (@user.image_url or avatar_for_gender(@user)), width: "150px", height: "150px",  class: "user-avatar" %>
     <div class="user-full_name">
       <%= "#{@user.first_name} #{@user.last_name}" %>
     </div>
@@ -41,6 +41,7 @@
           </div>
         </div>
       <% end %>
+      <%= will_paginate @posts %>
     </div>
   </div>
 
@@ -60,13 +61,14 @@
             <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
             <%= truncate(document.course.name, length: 32) %>
             <% end %>
-            <%= link_to document.document_url, class: "download-btn info-element" do %>
+            <%= link_to document.document_url, class: "download info-element" do %>
             <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
             Download
             <% end %>
           </div>
         </div>
       <% end %>
+      <%= will_paginate @documents %>
     </div>
   </div>
 </div>

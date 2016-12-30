@@ -5,6 +5,7 @@
       <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
     <% end %>
   <% end %>
+
 </div>
 
 <div class="videos container">
@@ -26,4 +27,5 @@
       <% end %>
     </div>
   <% end %>
-</div>
+</div><br>
+<%= will_paginate @videos %>

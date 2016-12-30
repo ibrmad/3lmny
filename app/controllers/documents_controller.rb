@@ -5,9 +5,9 @@ class DocumentsController < ApplicationController
 
   def index
     if params[:search] and not params[:search].empty?
-      @documents = Document.search(params[:search]).order("created_at DESC")
+      @documents = Document.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 12)
     else
-      @documents = Document.all.order('created_at DESC')
+      @documents = Document.all.order('created_at DESC').paginate(page: params[:page], per_page: 12)
     end
   end
 

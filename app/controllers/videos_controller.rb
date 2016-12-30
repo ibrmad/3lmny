@@ -4,14 +4,13 @@ class VideosController < ApplicationController
 
   def index
     if params[:search] and not params[:search].empty?
-      @videos = Video.search(params[:search]).order("created_at DESC")
+      @videos = Video.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 12)
     else
-      @videos = Video.all.order('created_at DESC')
+      @videos = Video.all.order('created_at DESC').paginate(page: params[:page], per_page: 12)
     end
   end
   def show
-    # @realted_videos = Video.where("title like ? AND course_id = ?", "%#{@video.title.partition(" ")[0]}%", @video.course_id)
-    @realted_videos = Video.where("title like ? AND course_id = ? AND id != ?", "%#{@video.title.partition(" ").first}%", @video.course_id, @video.id).limit(8)
+    @realted_videos = Video.where("course_id = ? AND id != ?", @video.course_id, @video.id).limit(8)
   end
 
   def new

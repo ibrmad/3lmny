@@ -14,9 +14,9 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @posts = Post.where(course_id: @course.id)
-    @documents = Document.where(course_id: @course.id)
-    @videos = Video.where(course_id: @course.id)
+    @posts = Post.where(course_id: @course.id).paginate(page: params[:page], per_page: 10)
+    @documents = Document.where(course_id: @course.id).paginate(page: params[:page], per_page: 10)
+    @videos = Video.where(course_id: @course.id).paginate(page: params[:page], per_page: 10)
   end
 
   def new

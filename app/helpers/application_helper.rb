@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def active(current)
     if controller_name == "posts" and current == "posts"
       " active-nav"
@@ -13,5 +14,15 @@ module ApplicationHelper
     else
       ""
     end
+  end
+
+  def avatar_for_gender(user)
+     if user.gender == "m"
+       (asset_path 'male_avatar.svg')
+     elsif user.gender == "f"
+       (asset_path 'female_avatar.svg')
+     else
+       (asset_path 'default-avatar.png')
+     end
   end
 end

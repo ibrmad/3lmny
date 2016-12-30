@@ -3,6 +3,7 @@ body
   font-family: $content-font
   color: darken( $divider-color, 40%)
   overflow-x: hidden
+  word-wrap: break-word
 #mainContent
   width: 100%
 #Content
@@ -10,15 +11,59 @@ body
 #side_nav
   height: 100%
   position: fixed
+  overflow: auto
   top: 0
   left: 0
   width: 200px
   background: #4B555F
-  padding: 1em
+  padding: 1em 0
   z-index: 9999
   transform: translateX(-200px)
   display: none
   visibility: hidden
+  .side-elements
+    padding: 0 1em
+  .mobile_user_settings
+    width: 100%
+    margin-top: 1em
+    a
+      border-top: 1px solid #353c44
+      padding: .7em 0 .7em .7em
+      color: $accent-color
+      font-size: 1.1em
+      &:last-child
+        border-bottom: 1px solid #353c44
+      &:active
+        background: #242a30
+  .side-nav
+    margin-top: 1em
+    .nav-link
+      border-top: 1px solid #353c44
+      padding: .7em 0 .7em .7em
+      color: $primary-color
+      font-size: 1.1em
+      &:last-child
+        border-bottom: 1px solid #353c44
+      &:active
+        background: #242a30
+    .active-nav
+      border: none
+      border-left: 3px solid $primary-color
+      border-top: 1px solid #353c44
+  .search-box
+    display: block
+    visibility: visible
+    position: relative
+    padding: .5em
+    margin: .5em 0em
+    height: 40px
+    input
+      height: 30px
+      border-radius: 20px
+      font-size: .9em
+      box-shadow: none
+
+
 #side_nav, #Content, #toggle_label, #Header
   transition: all 200ms ease-in-out
 #menu_toggle
@@ -57,7 +102,7 @@ body
   z-index: 999
   transition: all 200ms ease-in-out
   top: 27px
-  right: 160px
+  right: 130px
   color: white
   cursor: pointer
   will-change: transform
@@ -66,37 +111,6 @@ body
   &:checked ~
     form.search-box
       transform: translateY(75px)
-
-#user_settings
-  width: 200px
-  background: white
-  position: fixed
-  top: -10px
-  right: 40px
-  display: flex
-  box-shadow: 0px 2px 5px #ccc
-  flex-direction: column
-  transition: transform .2s ease-in-out
-  a
-    color: $accent-color
-    height: 40px
-    padding: 10px
-    border-bottom: 1px solid $divider-color
-
-#user_settings_label
-  position: fixed
-  z-index: 999
-  transition: transform 150ms ease-in-out
-  top: 30px
-  right: 30px
-  color: white
-  cursor: pointer
-  will-change: transform
-#user_settings_toggle
-  display: none
-  &:checked ~
-    #user_settings
-      transform: translateY(85px)
 form.search-box
   position: fixed
   width: 100%
@@ -189,3 +203,24 @@ ul.ui-autocomplete
 .search-form
   width: calc(100% - 150px)
   display: flex
+
+
+.pagination
+  display: flex
+  width: 100%
+  background: white
+  padding: .5em
+  justify-content: center
+  align-items: center
+  a, .previous_page, .next_page, .current
+    padding: .2em .5em
+
+.sign-in-up
+  background: white
+  max-width: 700px
+  margin: 0 auto
+  .tabs
+    width: 100%
+    li
+      width: 50%
+      // border: 

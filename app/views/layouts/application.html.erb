@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Lato|Roboto:400,500" rel="stylesheet">
     <meta name="msapplication-TileColor" content="#00d3f8">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#00d3f8">
@@ -32,28 +32,69 @@
         <svg class="icon-menu"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-menu"></use></svg>
       </label>
       <nav id="side_nav">
+        <% if user_signed_in? %>
+          <div class="side-elements">
+            <div class="user-functions flex-center-around">
+              <svg class="icon-notifications function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
+            </div>
+            <div class="user-info flex-center-around">
+              <%= link_to user_profile_path(current_user.username) do %>
+                <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
+              <% end %>
+            </div>
+          </div>
+          <%= form_tag searches_path, method: :get, class: "search-box" do |f| %>
+            <%= text_field_tag :search, params[:search], placeholder: "search", class: "search-feild" %>
+          <% end %>
+          <div class="mobile_user_settings flex-column">
+            <%= link_to user_profile_path(current_user.username) do %>
+              My Profile
+            <% end %>
+            <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+            <%= link_to 'Add Discussion', new_post_path %>
+            <%= link_to 'Add Document', new_document_path %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          </div>
+        <% else %>
+          <div class="side-elements">
+            <%= link_to 'Login', login_path, class: "login header-btn" %>
+            <%= link_to 'Register', register_path, class: "register header-btn" %>
+          </div>
+        <% end %>
+
+        <nav class="side-nav flex-column">
+          <%= link_to posts_path, class: "nav-link#{active('posts')}" do %>
+          <span>Discussions</span>
+          <% end %>
+          <%= link_to documents_path, class: "nav-link#{active('documents')}" do %>
+          <span>Documents</span>
+          <% end %>
+          <%= link_to videos_path, class: "nav-link#{active('videos')}" do %>
+          <span>Videos</span>
+          <% end %>
+          <%= link_to courses_path, class: "nav-link#{active('courses')}" do %>
+          <span>Courses</span>
+          <% end %>
+          <%= link_to announcements_path, class: "nav-link#{active('announcements')}" do %>
+          <span>Announcements</span>
+          <% end %>
+        </nav>
+
       </nav>
       <%= render 'layouts/header' %>
       <% if user_signed_in? %>
-        <input type="checkbox" name="checkbox" id="user_settings_toggle" />
-        <label for="user_settings_toggle" id="user_settings_label">
-          <svg class="icon-chevron-down sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
-        </label>
-        <div id="user_settings">
-          <%= link_to 'Edit profile', edit_user_path(current_user) %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        </div>
         <input type="checkbox" name="checkbox" id="search_toggle" />
         <label for="search_toggle" id="search_toggle_label">
           <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
         </label>
-        <%= form_tag searches_path, method: :get, class: "search-box flex-column" do |f| %>
+        <%= form_tag searches_path, method: :get, class: "search-box" do |f| %>
           <%= text_field_tag :search, params[:search], placeholder: "e.g. Java1, Algorithms, etc...", class: "search-feild" %>
         <% end %>
       <% end %>
       <div id="Content" class="container">
         <%= yield %>
       </div>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>

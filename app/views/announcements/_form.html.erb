@@ -1,8 +1,6 @@
 <%= form_for(announcement) do |f| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
-
       <ul>
       <% announcement.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,31 +9,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
+    <%= f.text_field :title, placeholder: "title describe the announcement" %>
+    <%= f.trix_editor :content, placeholder: "content of the announcement" %>
     <label for="avatar_upload" class="btn btn-block" id="avatar_label">
       <svg class="icon-image"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-image"></use></svg>
       <span>Select a picture</span>
     </label>
     <%= f.hidden_field :image, value: f.object.cached_image_data %>
     <%= f.file_field :image, id: "avatar_upload" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.datetime_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="date">
+      <%= f.datetime_select(:date, ampm: true, time_separator: "", datetime_separator: "",
+                            prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year', hour: 'Choose hour', minute: 'Choose minute'},
+                            class: "date") %>
+    </div>
+    <%= f.submit "Publish", class: "btn" %>
 <% end %>

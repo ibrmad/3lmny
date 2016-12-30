@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210150731) do
+ActiveRecord::Schema.define(version: 20161220190257) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -22,12 +22,11 @@ ActiveRecord::Schema.define(version: 20161210150731) do
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",          limit: 65535
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
+    t.text     "content",    limit: 65535
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "post_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,6 +61,17 @@ ActiveRecord::Schema.define(version: 20161210150731) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "content",    limit: 65535
@@ -90,6 +100,7 @@ ActiveRecord::Schema.define(version: 20161210150731) do
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "gender",                 limit: 1,     default: "u"
     t.text     "bio",                    limit: 65535
     t.text     "image_data",             limit: 65535
     t.datetime "created_at",                                           null: false

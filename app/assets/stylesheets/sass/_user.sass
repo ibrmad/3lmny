@@ -26,7 +26,7 @@
 .login-form
   width: 300px
   padding: 1em
-  input
+  input[type=text], input[type=password], input[type=email]
     margin: 0.3em 0
     padding: .7em .7em .7em 2em
   .username
@@ -52,3 +52,21 @@
 .not-signup
   margin: 1em
   text-align: center
+.field_with_errors
+  input
+    width: 100%
+    border-color: red
+.users
+  width: 80%
+  margin: 0 auto
+  .user
+    align-items: center
+    margin-bottom: 1em
+  .username
+    width: 100px
+    font-size: 1.1em
+  .email
+    width: 250px
+  .user-element
+    margin-right: 1em
+    font-family: $headline-font

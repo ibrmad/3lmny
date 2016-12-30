@@ -1,0 +1,29 @@
+<div class="users flex-column">
+  <div class="user flex-start">
+    <%= image_tag "avatar", width: "50px", height: "50px", class: "avatar user-element" %>
+    <div class="username user-element">
+      USERNAME
+    </div>
+    <div class="email user-element">
+      EMAIL
+    </div>
+    <div class="register-date user-element">
+      REGISTRATION DATE
+    </div>
+  </div>
+
+  <% @users.each do |user| %>
+    <div class="user flex-start white-box">
+      <%= image_tag (user.image_url or avatar_for_gender(user)), width: "50px", height: "50px", class: "avatar user-element" %>
+      <div class="username user-element">
+        <%= link_to user.username, user_profile_path(user.username) %>
+      </div>
+      <div class="email user-element">
+        <%= user.email %>
+      </div>
+      <div class="register-date user-element">
+        <%= user.created_at.strftime("%e %b %Y %H:%M %p") %>
+      </div>
+    </div>
+  <% end %>
+</div>

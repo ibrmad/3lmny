@@ -17,6 +17,7 @@
 .white-box
   background: white
   overflow: hidden
+  border-radius: 3px
 .flex-column
   display: flex
   flex-direction: column
@@ -38,18 +39,12 @@
   align-items: center
   justify-content: center
   background: $primary-color
-  background-image: url(/header-pattern.svg)
-  background-size: 150px
-  background-position: 50px
-  transition: all 300ms ease
   border-radius: 3px
   color: white
   font-size: 1.1em
+  font-family: $headline-font
   &:hover
     background: lighten($primary-color, 5%)
-    background-image: url(/header-pattern.svg)
-    background-size: 150px
-    background-position: 50px
 .btn-block
   width: 100%
 
@@ -72,15 +67,31 @@
 .add-new-btn
   height: 50px
   width: 100%
-  background: white
+  background: $accent-color
+  border-radius: 3px
   display: flex
   justify-content: center
   align-items: center
-  border: 1px solid #e6e6e6
+  color: white
+  font-family: $headline-font
+.no-results
+  width: 100%
+  text-align: center
+  font-size: 1.2em
+  color: #aaa
+  padding: 1em
+  background: #fff
+  margin-bottom: 1em
+.lighter-color
+  background: $divider-color
   color: $accent-color
-  background-image: url(/pattern.svg)
-  background-size: 100px
-  background-position: 30px
-  svg
-    width: 40px
-    height: 40px
+#error_explanation
+  h2
+    font-size: 1em
+  ul
+    list-style-type: disc
+    margin: 0
+    padding: 1em 1em 1em 2em
+    li
+      font-size: 1em
+      color: #d58585

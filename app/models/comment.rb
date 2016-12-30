@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :commentable, polymorphic: true
   belongs_to :user
-  has_many :comments, as: :commentable
+  belongs_to :post
+  validates :content, presence: true
+
 end

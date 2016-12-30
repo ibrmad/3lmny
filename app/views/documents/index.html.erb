@@ -7,7 +7,7 @@
     <% end %>
   <% end %>
   <%= link_to new_document_path, class: "add-new-document add-new-btn" do %>
-    <svg class="icon-add-document"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-document"></use></svg>
+    Add Document
   <% end %>
 </div>
 
@@ -22,7 +22,7 @@
             <%= document.title %>
           </div>
           <div class="username info-element">
-            <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= image_tag (document.user.image_url or avatar_for_gender(document.user)), width: "20px", height: "20px", class: "user_avatar" %>
             <%= link_to document.user.username, user_profile_path(document.user.username) %>
           </div>
           <div class="time-ago info-element">
@@ -34,9 +34,16 @@
           <%= truncate(document.course.name, length: 32) %>
           <% end %>
         </div>
-        <%= link_to document.document_url, class: "btn download-btn btn-block" do %>
-        <svg class="icon-download sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-download"></use></svg>
+        <%= link_to document.document_url, class: "download-btn-hidden" do %>
+        Download
         <% end %>
+        <div class="hidden-doc-info">
+          <%= link_to document.document_url, class: "download-btn" do %>
+          Download
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
+  <br>
+  <%= will_paginate @documents %>

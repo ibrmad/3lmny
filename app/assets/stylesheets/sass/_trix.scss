@@ -16,6 +16,8 @@ trix-editor {
   &:focus{
     border-color: $primary-color;
   }}
+trix-toolbar {
+  margin-top: 1em}
 trix-toolbar * {
   box-sizing: border-box; }
 trix-toolbar .button_group {

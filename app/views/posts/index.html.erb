@@ -1,5 +1,11 @@
+<%= form_tag posts_path, method: :get, class: "posts-search-res search-form flex-start container" do %>
+<%= text_field_tag :search, params[:search], placeholder: "search in discussions", class: "search-field" %>
+<%= button_tag type: "submit", class: "search-btn" do %>
+<svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
+<% end %>
+<% end %>
 <div class="container flex-start">
-  <div class="posts flex-column">
+  <div class="posts flex-column"> 
     <% @posts.each do |post| %>
       <div class="white-box post">
         <div class="title">
@@ -18,7 +24,7 @@
             <% end %>
           </div>
           <div class="username info-element">
-            <%= image_tag (post.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= image_tag (post.user.image_url or avatar_for_gender(post.user)), width: "20px", height: "20px", class: "user_avatar" %>
             <%= link_to post.user.username, user_profile_path(post.user.username) %>
           </div>
           <div class="time-ago info-element">
@@ -36,20 +42,39 @@
         </div>
       </div>
     <% end %>
+    <br>
+    <%= will_paginate @posts %>
   </div>
   <div class="posts-sidebar">
     <div class="posts-functions flex-column">
       <%= form_tag posts_path, method: :get, class: "posts-search search-form flex-start" do %>
-        <%= text_field_tag :search, params[:search], placeholder: "search in posts", class: "search-field" %>
+        <%= text_field_tag :search, params[:search], placeholder: "search in discussions", class: "search-field" %>
         <%= button_tag type: "submit", class: "search-btn" do %>
           <svg class="icon-search"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-search"></use></svg>
         <% end %>
       <% end %>
       <%= link_to new_post_path, class: "add-new-post add-new-btn" do %>
-        <svg class="icon-add-discussion"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-add-discussion"></use></svg>
+        Add Discussion
       <% end %>
     </div>
-    <div class="post white-box">
+    <% if current_user.present? %>
+      <% if current_user.is_admin %>
+        <div class="side-block white-box">
+          <div class="title">
+            ADMIN
+          </div>
+          <div class="content">
+            <%= link_to "Add Announcement", new_announcement_path, class: "add-new-btn lighter-color" %><br>
+            <%= link_to "Add Video", new_video_path, class: "add-new-btn lighter-color" %><br>
+            <%= link_to "Add Course", new_course_path, class: "add-new-btn lighter-color" %><br>
+            <%= link_to "Add Major", new_major_path, class: "add-new-btn lighter-color" %><br>
+            <%= link_to "Add Faculty", new_faculty_path, class: "add-new-btn lighter-color" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="side-block white-box">
       <div class="title">
         TOP COURSES
       </div>
@@ -63,12 +88,19 @@
         </div>
       </div>
     </div>
-    <div class="post white-box">
+
+    <div class="side-block white-box">
       <div class="title">
-        SEARCH
+        UPCOMING
       </div>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div style="background-image:url(<%= @announcement.image_url %>);" class="announcement">
+          <%= link_to @announcement.title, announcement_path(@announcement), class: "title" %>
+          <div class="date">
+            <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+            <%= @announcement.date.strftime("%b %e, %l:%M %p") %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

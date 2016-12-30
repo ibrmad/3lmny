@@ -7,6 +7,14 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Retype new password", class: "input-block" %>
       <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current password", class: "input-block", required: true %>
       <%= f.submit "Save!", class: "btn" %>
+      <div class="gender">
+        <%= f.label :gender, "Male", :value => "m"  %>
+        <%= f.radio_button :gender, "m" %>
+        <%= f.label :gender, "Female", :value => "f" %>
+        <%= f.radio_button :gender, "f" %>
+        <%= f.label :gender, "Other", :value => "u" %>
+        <%= f.radio_button :gender, "u" %>
+      </div>
     </div>
 
     <div class="user-avatar">
