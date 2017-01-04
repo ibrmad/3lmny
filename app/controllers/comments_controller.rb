@@ -13,9 +13,9 @@ class CommentsController < ApplicationController
       Notification.create(recipient: user, actor: current_user, action: "comment on a discussion you comment on!", notifiable: @comment)
     end
     if @comment.save
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: 'Comment was successfully created.'
     else
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), alert: 'Something went wrong!'
     end
   end
   private

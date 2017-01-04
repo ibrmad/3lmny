@@ -20,10 +20,3 @@ $( document ).on('turbolinks:load', function() {
     }
   });
 });
-function reply(id){
-  $(document).ready(function(){
-    $('#showReply' + id).click( function(){
-      $('#hidden-reply-' + id).toggle(200);
-    });
-  });
-}

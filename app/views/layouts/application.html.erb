@@ -26,6 +26,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %>
+        <button type="button" name="button" id="dismiss_btn">x</button>
+      </div>
+    <% end %>
     <div id="mainContent">
       <input type="checkbox" name="checkbox" id="menu_toggle" />
       <label for="menu_toggle" id="toggle_label">

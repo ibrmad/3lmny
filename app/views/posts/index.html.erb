@@ -5,7 +5,7 @@
 <% end %>
 <% end %>
 <div class="container flex-start">
-  <div class="posts flex-column"> 
+  <div class="posts flex-column">
     <% @posts.each do |post| %>
       <div class="white-box post">
         <div class="title">
@@ -57,23 +57,6 @@
         Add Discussion
       <% end %>
     </div>
-    <% if current_user.present? %>
-      <% if current_user.is_admin %>
-        <div class="side-block white-box">
-          <div class="title">
-            ADMIN
-          </div>
-          <div class="content">
-            <%= link_to "Add Announcement", new_announcement_path, class: "add-new-btn lighter-color" %><br>
-            <%= link_to "Add Video", new_video_path, class: "add-new-btn lighter-color" %><br>
-            <%= link_to "Add Course", new_course_path, class: "add-new-btn lighter-color" %><br>
-            <%= link_to "Add Major", new_major_path, class: "add-new-btn lighter-color" %><br>
-            <%= link_to "Add Faculty", new_faculty_path, class: "add-new-btn lighter-color" %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
     <div class="side-block white-box">
       <div class="title">
         TOP COURSES

@@ -37,6 +37,9 @@
         </div>
         <svg class="icon-chevron-down sixteenth-px function" id="show_settings"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
         <div id="user_settings">
+          <% if current_user.is_admin %>
+            <%= link_to 'Admin Dashboard', admin_index_path %>
+          <% end %>
           <%= link_to 'Edit profile', edit_user_path(current_user) %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </div>

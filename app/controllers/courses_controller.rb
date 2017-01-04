@@ -29,17 +29,17 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-    redirect_to @course
+    redirect_to @course, notice: 'Course was successfully created.'
     else
-    render :new
+    render :new, alert: 'Something went wrong!'
     end
   end
 
   def update
     if @course.update(course_params)
-      redirect_to @course
+      redirect_to @course, success: 'Course was successfully updated.'
     else
-      render :edit
+      render :edit, alert: 'Something went wrong!'
     end
   end
 

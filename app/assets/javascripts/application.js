@@ -22,7 +22,12 @@ $( document ).on('turbolinks:load', function() {
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     $('#avatar_label').text(label);
   });
-
+  $('#dismiss_btn').on('click', function(){
+    $('.alert').fadeOut(300);
+  });
+  setTimeout(function(){
+    $('.alert').fadeOut(300);
+  }, 7000);
   $('#post_course_id').selectize({
     openOnFocus: false
   });

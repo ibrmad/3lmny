@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :admin
   resources :searches
   resources :announcements
   resources :videos
   resources :majors
   resources :faculties
-  resources :documents
+  resources :documents do
+    member do
+      get :approve
+    end
+  end
   resources :notifications do
     collection do
       post :mark_as_read

@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20161220190257) do
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "document_data", limit: 65535
+    t.boolean  "approved",                    default: false
     t.integer  "user_id"
     t.integer  "course_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "faculties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

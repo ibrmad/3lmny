@@ -27,17 +27,17 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-    redirect_to @post
+    redirect_to @post, success: 'Discussion was successfully created.'
     else
-    render :new
+    render :new, alert: 'Something went wrong!'
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post, success: 'Discussion was successfully updated.'
     else
-      render :edit
+      render :edit, alert: 'Something went wrong!'
     end
   end
 

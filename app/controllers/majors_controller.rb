@@ -22,9 +22,9 @@ class MajorsController < ApplicationController
     @major = Major.new(major_params)
     @major.faculty_id = params[:faculty_id]
     if @major.save
-    redirect_to @major
+      redirect_to @major, success: 'Major was successfully created.'
     else
-    render :new
+    render :new, alert: 'Something went wrong!'
     end
   end
 

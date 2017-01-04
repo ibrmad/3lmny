@@ -19,9 +19,9 @@ class FacultiesController < ApplicationController
   def create
     @faculty = Faculty.new(faculty_params)
     if @faculty.save
-    redirect_to @faculty
+    redirect_to @faculty, success: 'Faculty was successfully created.'
     else
-    render :new
+    render :new, alert: 'Something went wrong!'
     end
   end
 
