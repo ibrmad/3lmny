@@ -1,11 +1,13 @@
 #Footer
   width: 100%
-  height: 300px
+  height: 50px
   background: $accent-color
-  margin-top: 2em
+  // margin-top: 2em
   display: flex
   align-items: center
   padding: 1em
+  justify-content: space-between
+  border-bottom: 3px solid $primary-color
   .about
     color: #ccc
     p
@@ -16,7 +18,6 @@
       margin-bottom: -10px
       margin-left: 5px
   .social
-    flex-direction: column
     min-width: 200px
     align-items: center
     justify-content: center
@@ -31,11 +32,5 @@
     svg
       width: 30px
       height: 30px
-
     &:hover
       color: white
-  .s-btns
-    min-width: 150px
-    justify-content: space-between
-  h1
-    font-size: 1.8em

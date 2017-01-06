@@ -26,9 +26,7 @@ class DocumentsController < ApplicationController
     @document.user = current_user
     @document.approved = true if current_user.is_admin
     if @document.save
-      flash[:success] = "Document was successfully created."
-      flash[:notice]  = "The document will show when it's approved."
-      redirect_to :documents
+      redirect_to :documents, notice: "Document was successfully created, It will show when it's approved."
     else
       render :new
     end

@@ -5,9 +5,16 @@ body
   overflow-x: hidden
   word-wrap: break-word
   min-height: 100vh
+body, html
+  height: 100%
 #mainContent
-  min-height: 100vh
   width: 100%
+  min-height: 100%
+  margin-bottom: -50px
+  &:after
+    content: ""
+    display: block
+    height: 50px
 #Content
   padding-top: 8em
 #side_nav
@@ -103,8 +110,8 @@ body
   position: fixed
   z-index: 999
   transition: all 200ms ease-in-out
-  top: 27px
-  right: 130px
+  top: 24px
+  right: 134px
   color: white
   cursor: pointer
   will-change: transform
@@ -112,20 +119,20 @@ body
   display: none
   &:checked ~
     form.search-box
-      transform: translateY(75px)
+      transform: translateY(80px)
 form.search-box
   position: fixed
   width: 100%
-  height: 75px
+  height: 70px
   z-index: 997
-  top: 0
+  top: -10px
   left: 0
   transition: all 200ms ease-in-out
   will-change: transform
   .search-feild
-    font-size: 2em
+    font-size: 1.5em
     width: 100%
-    height: 75px
+    height: 70px
     padding: .5em !important
     background: white !important
     background-image: url(/search-icon.svg) !important

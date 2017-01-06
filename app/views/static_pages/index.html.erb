@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>3lmny | by students to students</title>
+    <%= csrf_meta_tags %>
+    <meta name="msapplication-TileColor" content="#34c9ab">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#34c9ab">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:400,500" rel="stylesheet">
+    <%= stylesheet_link_tag("landing") %>
+  </head>
+  <body>
+    <header id="Header">
+      <div class="logo">
+        <img src="/logo.svg" alt="3lmny" />
+      </div>
+      <div class="shapes">
+        <img src="/landing/header-shapes.svg" alt="3lmny" />
+      </div>
+      <div class="description">
+        We aspire to improve and develop
+        the educational process, and raise the level
+        of knowledge of college students.
+      </div>
+      <div class="buttons">
+        <%= link_to "Login", login_path, class: "login" %>
+        <%= link_to "Register", register_path, class: "register" %>
+      </div>
+    </header>
+
+
+    <div id="Document_section" class="section">
+      <img src="/landing/doc-icon.svg" alt="3lmny" />
+      <div class="text">
+        <p>
+          All the documents <br>
+          that you need in one place.
+        </p>
+        <small>organized, sorted and searchable documents.</small>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div id="Discuss_section" class="section">
+      <div class="text">
+        <p>
+          Students questions <br>
+          answered by students.
+        </p>
+        <small>The ability to discuss and answer questions.</small>
+      </div>
+      <img src="/landing/disc-icon.svg" alt="3lmny" />
+    </div>
+
+    <div class="line"></div>
+
+    <div id="Video_section" class="section">
+      <img src="/landing/vid-icon.svg" alt="3lmny" />
+      <div class="text">
+        <p>
+          Watch what you missed <br>
+          any time from any where.
+        </p>
+        <small>Watching in live is also availabe for you.</small>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div id="Explore_section" class="section">
+      <div class="text">
+        What are you waiting for?
+      </div>
+      <%= link_to "Explore", posts_path, class: "explore" %>
+    </div>
+
+    <div class="line"></div>
+
+    <footer id="Footer">
+      <img src="/logo-colored.svg" alt="3lmny" />
+      <p>By students to students.</p>
+    </footer>
+  </body>
+</html>

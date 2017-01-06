@@ -16,6 +16,9 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem "autoprefixer-rails"
 gem 'selectize-rails', '~> 0.12.4'
 gem 'will_paginate', '~> 3.1.0'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

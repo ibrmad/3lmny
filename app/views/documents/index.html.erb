@@ -15,12 +15,13 @@
     <% @documents.each do |document| %>
       <div class="document white-box">
         <div class="extension-type">
-          <%= extension_type(document.document.mime_type) %>
-        </div>
-        <div class="document-info flex-column">
+
           <div class="title">
             <%= document.title %>
           </div>
+          <%# extension_type(document.document.mime_type) %>
+        </div>
+        <div class="document-info flex-column">
           <div class="username info-element">
             <%= image_tag (document.user.image_url or avatar_for_gender(document.user)), width: "20px", height: "20px", class: "user_avatar" %>
             <%= link_to document.user.username, user_profile_path(document.user.username) %>
@@ -34,14 +35,9 @@
           <%= truncate(document.course.name, length: 32) %>
           <% end %>
         </div>
-        <%= link_to document.document_url, class: "download-btn-hidden" do %>
+        <%= link_to document.document_url, class: "download-btn" do %>
         Download
         <% end %>
-        <div class="hidden-doc-info">
-          <%= link_to document.document_url, class: "download-btn" do %>
-          Download
-          <% end %>
-        </div>
       </div>
     <% end %>
   </div>

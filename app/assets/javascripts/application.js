@@ -37,9 +37,6 @@ $( document ).on('turbolinks:load', function() {
   $('#video_course_id').selectize({
     openOnFocus: false
   });
-  $('#_major_id').selectize({
-    openOnFocus: false
-  });
 
   $('ul.tabs li').click(function(){
     var tab_id = $(this).attr('data-tab');

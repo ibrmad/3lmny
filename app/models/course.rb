@@ -4,5 +4,6 @@ class Course < ApplicationRecord
   has_many :documents
   has_many :posts
   validates :name, :major_id, presence: true
+  include ImageUploader[:image]
 
 end

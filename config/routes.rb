@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+  }
   devise_scope :user do
     get 'users/:username', to: 'users/sessions#profile', as: 'user_profile'
     get 'users/:id/edit', to: 'users/registrations#edit', as: 'edit_user'
@@ -39,5 +43,12 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new', as: 'login'
     get 'register', to: 'users/registrations#new', as: 'register'
   end
-  root to: "posts#index"
+
+  authenticated :user do
+    root to: "posts#index"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end
+
+  root to: "static_pages#index"
 end
