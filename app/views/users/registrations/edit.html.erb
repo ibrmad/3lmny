@@ -1,29 +1,63 @@
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "white-box flex-center-around edit-user" }) do |f| %>
-    <!-- <%= devise_error_messages! %> -->
-    <div class="user-info-fields">
-      <%= f.text_field :first_name, autofocus: true, placeholder: "First name", class: "input-block" %>
-      <%= f.text_field :last_name, placeholder: "Last name", class: "input-block" %>
-      <%= f.password_field :password, autocomplete: "off", placeholder: "New password", class: "input-block" %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Retype new password", class: "input-block" %>
-      <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current password", class: "input-block", required: true %>
-      <%= f.submit "Save!", class: "btn" %>
-      <div class="gender">
-        <%= f.label :gender, "Male", :value => "m"  %>
-        <%= f.radio_button :gender, "m" %>
-        <%= f.label :gender, "Female", :value => "f" %>
-        <%= f.radio_button :gender, "f" %>
-        <%= f.label :gender, "Other", :value => "u" %>
-        <%= f.radio_button :gender, "u" %>
-      </div>
-    </div>
 
-    <div class="user-avatar">
-      <%= f.text_area :bio, class: "user-bio", placeholder: "Bio" %>
-      <label for="avatar_upload" class="btn btn-block" id="avatar_label">
-        <svg class="icon-image"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-image"></use></svg>
-        <span>Select a picture</span>
-      </label>
-      <%= f.hidden_field :image, value: f.object.cached_image_data %>
-      <%= f.file_field :image, id: "avatar_upload" %>
-    </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+   html: { method: :put, class: "white-box flex-column" }) do |f| %>
+    <h1>Edit personal information</h1>
+    <%= devise_error_messages! %>
+      <div class="personal-info edit-element">
+        <div class="label">
+          Personal Information:
+        </div>
+        <div class="values">
+          <div class="_label">
+            <span>First name:</span>
+            <%= f.text_field :first_name, autofocus: true, placeholder: "First name", class: "input-block" %>
+          </div>
+          <div class="_label">
+            <span>Last name:</span>
+            <%= f.text_field :last_name, placeholder: "Last name", class: "input-block" %>
+          </div>
+          <div class="_label">
+            <span>Biography:</span>
+            <%= f.text_area :bio, class: "user-bio", placeholder: "Bio" %>
+          </div>
+          <div class="_label">
+            <span>Gender:</span>
+            <div class="gender">
+              <div class="male">
+                <%= f.radio_button :gender, "m" %>
+                <%= f.label :gender, "Male", :value => "m"  %>
+              </div>
+              <div class="female">
+                <%= f.radio_button :gender, "f" %>
+                <%= f.label :gender, "Female", :value => "f" %>
+              </div>
+              <div class="unknown">
+                <%= f.radio_button :gender, "u" %>
+                <%= f.label :gender, "Other", :value => "u" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-image edit-element">
+        <div class="label">
+          Profile Picture:
+        </div>
+        <div class="values">
+          <label for="avatar_upload" class="btn btn-block" id="avatar_label">
+            <svg class="icon-image"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-image"></use></svg>
+            <span>Select a picture</span>
+          </label>
+          <div class="view-pic" style="background-image: url(<%= (@user.cached_image_data or @user.image_url or avatar_for_gender(@user)) %>)"></div>
+          <%= f.hidden_field :image, value: f.object.cached_image_data %>
+          <%= f.file_field :image, id: "avatar_upload", onchange: "readURL(this);" %>
+        </div>
+        <small><i>for a perfect prfile picture we prefer to use a square pictures e.g. 200x200 ...</i></small>
+      </div>
+      <%= f.submit "Save!", class: "btn" %>
   <% end %>
+
+
+  <%# f.password_field :password, autocomplete: "off", placeholder: "New password", class: "input-block" %>
+  <%# f.password_field :password_confirmation, autocomplete: "off", placeholder: "Retype new password", class: "input-block" %>
+  <%# f.password_field :current_password, autocomplete: "off", placeholder: "Current password", class: "input-block" %>

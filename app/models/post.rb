@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   acts_as_votable
   belongs_to :user
   belongs_to :course
-  has_many :comments
+  has_many :comments, as: :commentable, :dependent => :delete_all
   has_many :users, through: :comments
   validates :title, :content, :course_id, presence: true
   def post_votes

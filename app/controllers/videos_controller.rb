@@ -11,6 +11,7 @@ class VideosController < ApplicationController
   end
   def show
     @realted_videos = Video.where("course_id = ? AND id != ?", @video.course_id, @video.id).limit(8)
+    @comments = Comment.where(commentable: @video)
   end
 
   def new

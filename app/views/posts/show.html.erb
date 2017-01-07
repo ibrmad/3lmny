@@ -53,7 +53,10 @@
   <% if user_signed_in? %>
     <div class="white-box add-comment">
       <h3>Add Comment</h3>
-      <%= render 'comments/form' %>
+      <%= form_for([@post, Comment.new]) do |f| %>
+          <%= f.trix_editor :content %>
+          <%= f.submit "Comment", class: "comment-btn btn" %>
+      <% end %>
     </div>
   <% end %>
   <div class="comments-tree flex-column">

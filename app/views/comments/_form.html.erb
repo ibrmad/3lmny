@@ -1,4 +1,0 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-    <%= f.trix_editor :content %>
-    <%= f.submit "Comment", class: "comment-btn btn" %>
-<% end %>

@@ -40,7 +40,8 @@
           <% if current_user.is_admin %>
             <%= link_to 'Admin Dashboard', admin_index_path %>
           <% end %>
-          <%= link_to 'Edit profile', edit_user_path(current_user) %>
+          <%= link_to 'Edit profile info', edit_user_profile_path(current_user) %>
+          <%= link_to 'Edit password', edit_password_users_path(current_user) %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </div>
       </div>

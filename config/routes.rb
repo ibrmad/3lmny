@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-
+  resource :users, only: [:edit] do
+    member do
+      get ':id/edit_password', to: 'users#edit_password', as: 'edit_password'
+      patch ':id/update_password', to: 'users#update_password', as: 'update_password'
+    end
+  end
   resources :admin
   resources :searches
   resources :announcements
-  resources :videos
+  resources :videos do
+    resources :comments
+  end
   resources :majors
   resources :faculties
   resources :documents do
@@ -35,10 +42,14 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations',
   }
   devise_scope :user do
+
     get 'users/:username', to: 'users/sessions#profile', as: 'user_profile'
-    get 'users/:id/edit', to: 'users/registrations#edit', as: 'edit_user'
+    get 'users/:id/edit', to: 'users/registrations#edit', as: 'edit_user_profile'
+    # get 'users/:id/update_password', to: 'users/registrations#update_password', as: 'update_user_password'
     get 'users', to: 'users/registrations#index', as: 'users'
     get 'login', to: 'users/sessions#new', as: 'login'
     get 'register', to: 'users/registrations#new', as: 'register'

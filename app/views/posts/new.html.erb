@@ -1,4 +1,14 @@
-<div class="container post_form white-box">
-  <h3>New Discussion</h3>
-  <%= render 'form', post: @post %>
-</div
+<div class="container post_form">
+  <div class="post-content white-box">
+    <%= render 'form', post: @post %>
+  </div>
+  <div class="post-info">
+    <h1>New Discussion</h1>
+    <ul>
+      <li>You are free to add question that can be answered or just for discuss.</li>
+      <li>Write a meaningful and full title for your discussion.</li>
+      <li>if you asking question search about it before ask it.</li>
+      <li>Select the proper course to your discussion.</li>
+    </ul>
+  </div>
+</div>

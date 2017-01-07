@@ -21,9 +21,10 @@
 
   <div class="social-login flex-column">
     <div class="reg-in-login">
-      <span>Not registered?</span>
+      <%= link_to "Forgot your password?", new_user_password_path %> |
       <%= link_to "Register", register_path %>
     </div>
+
     <!-- <%# link_to user_facebook_omniauth_authorize_path, class: "social-login-btn facebook-btn" do %>
       <svg class="icon-facebook-alt"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-facebook-alt"></use></svg>
       <span>Login using Facebook</span>

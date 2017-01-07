@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin, except: [:index, :show]
   def index
-    @announcements = Announcement.all.order("date ASC").paginate(page: params[:page], per_page: 15)
+    @announcements = Announcement.where("date >= ?", (Time.now + 7200)).order("date ASC").paginate(page: params[:page], per_page: 15)
   end
 
   def show

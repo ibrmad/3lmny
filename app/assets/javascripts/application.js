@@ -16,11 +16,23 @@
 //= require trix
 //= require turbolinks
 //= require_tree .
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('.view-pic').css('background-image','url('+ e.target.result +')');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 $( document ).on('turbolinks:load', function() {
   $(document).on('change', '#avatar_upload', function() {
+    $('.view-pic').css('label');
     var input = $(this),
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     $('#avatar_label').text(label);
+
   });
   $('#dismiss_btn').on('click', function(){
     $('.alert').fadeOut(300);

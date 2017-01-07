@@ -48,4 +48,32 @@
       <% end %>
     </div>
   </div>
+  <% if user_signed_in? %>
+    <div class="white-box add-comment">
+      <h3>Add Comment</h3>
+      <%= form_for([@video, Comment.new]) do |f| %>
+          <%= f.trix_editor :content %>
+          <%= f.submit "Comment", class: "comment-btn btn" %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="comments-tree flex-column">
+    <% @comments.each do |comment| %>
+      <div class="single-comment white-box">
+        <div class="info flex-center-start">
+          <div class="username info-element">
+            <%= image_tag (comment.user.image_url or avatar_for_gender(comment.user)), width: "20px", height: "20px", class: "user_avatar" %>
+            <%= link_to comment.user.username, user_profile_path(comment.user.username) %>
+          </div>
+          <div class="time-ago info-element">
+            <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
+            <%= time_ago_in_words(comment.created_at) %>
+          </div>
+        </div>
+        <div id="md-content" class="post-content">
+          <%= sanitize comment.content %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

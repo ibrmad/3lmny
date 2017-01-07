@@ -25,6 +25,11 @@
     <%= stylesheet_link_tag("landing") %>
   </head>
   <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %>
+        <button type="button" name="button" id="dismiss_btn">x</button>
+      </div>
+    <% end %>
     <header id="Header">
       <div class="logo">
         <img src="/logo.svg" alt="3lmny" />

@@ -40,7 +40,11 @@
         <% if user_signed_in? %>
           <div class="side-elements">
             <div class="user-functions flex-center-around">
-              <svg class="icon-notifications function"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
+              <div class="icon-notification function">
+                <svg class="icon-notifications" id="show_notifications"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
+                <span id="unread_count"></span>
+              </div>
+              <div class="notifications-box" id="notifications_toggle"></div>
             </div>
             <div class="user-info flex-center-around">
               <%= link_to user_profile_path(current_user.username) do %>
@@ -55,7 +59,7 @@
             <%= link_to user_profile_path(current_user.username) do %>
               My Profile
             <% end %>
-            <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+            <%= link_to 'Edit Profile', edit_user_profile_path(current_user) %>
             <%= link_to 'Add Discussion', new_post_path %>
             <%= link_to 'Add Document', new_document_path %>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
