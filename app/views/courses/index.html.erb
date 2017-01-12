@@ -1,7 +1,5 @@
 <div class="container">
-  <script>
-    Turbolinks.clearCache();
-  </script>
+
   <%= form_tag courses_path, method: :get, id: "select_major" do %>
     <%= grouped_collection_select(nil, :major_id, Faculty.all, :majors, :name, :id, :name, prompt: "Select a major:") %>
   <% end %>

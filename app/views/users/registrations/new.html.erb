@@ -5,12 +5,31 @@
   </div>
   <div class="line"></div><br>
   <%= devise_error_messages! %>
-    <%= f.text_field :username, autofocus: true, placeholder: "username", class: "username", required: "required" %>
-    <%= f.email_field :email, placeholder: "email", class: "email", required: "required" %>
+  <%= f.text_field :username, autofocus: true, placeholder: "username", class: "username", required: "required" %>
+  <%= f.email_field :email, placeholder: "email", class: "email", required: "required" %>
+  <% if f.object.password_required? %>
     <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "password", required: "required" %>
     <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "retype the password", class: "password", required: "required" %>
     <% if @minimum_password_length %>
       <em style="color: #70767b;font-size:0.8em;">(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.submit "Register", class: "btn" %>
+  <% else %>
+    <br>
+  <% end %>
+  <%= f.submit "Register", class: "btn" %>
 <% end %>
+<div class="social-login flex-column">
+  <div class="reg-in-login">
+    <%= link_to "Forgot your password?", new_user_password_path %> |
+    <%= link_to "Register", register_path %>
+  </div>
+
+  <%= link_to user_facebook_omniauth_authorize_path, class: "social-login-btn facebook-btn" do %>
+    <svg class="icon-facebook-alt"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-facebook-alt"></use></svg>
+    <span>Register using Facebook</span>
+  <% end %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "social-login-btn google-btn" do %>
+    <svg class="icon-google-alt"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-google-alt"></use></svg>
+    <span>Register using Google</span>
+  <% end %>
+</div>

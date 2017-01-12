@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>3lmny | From students to students</title>
+    <title>3lmny | By students to students</title>
     <%= csrf_meta_tags %>
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -16,18 +16,18 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Lato|Roboto:400,500" rel="stylesheet">
-    <meta name="msapplication-TileColor" content="#00d3f8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:400,500" rel="stylesheet">
+    <meta name="msapplication-TileColor" content="#34c9ab">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#00d3f8">
+    <meta name="theme-color" content="#34c9ab">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
         <button type="button" name="button" id="dismiss_btn">x</button>
       </div>
     <% end %>
@@ -39,13 +39,13 @@
       <nav id="side_nav">
         <% if user_signed_in? %>
           <div class="side-elements">
-            <div class="user-functions flex-center-around">
+            <!-- <div class="user-functions flex-center-around">
               <div class="icon-notification function">
                 <svg class="icon-notifications" id="show_notifications"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
                 <span id="unread_count"></span>
               </div>
               <div class="notifications-box" id="notifications_toggle"></div>
-            </div>
+            </div> -->
             <div class="user-info flex-center-around">
               <%= link_to user_profile_path(current_user.username) do %>
                 <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />

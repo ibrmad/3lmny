@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin, except: [:index, :show]
   def index
-    @announcements = Announcement.where("date >= ?", (Time.now + 7200)).order("date ASC").paginate(page: params[:page], per_page: 15)
+    @announcements = Announcement.where("date > ?", (Time.now + 1.hour)).order("date ASC").paginate(page: params[:page], per_page: 15)
   end
 
   def show
@@ -18,6 +18,7 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = Announcement.new(announcement_params)
     if @announcement.save
+      Notification.create(recipient: nil, actor: current_user, action: "We posted a new ", notifiable: @announcement)
       redirect_to @announcement, notice: 'Announcement was successfully created.'
     else
       render :new

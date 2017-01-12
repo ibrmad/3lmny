@@ -23,7 +23,7 @@ class Notifications
       $("#notifications_toggle").html("<p>There is no notifications!</p>")
   handleClick: (e) ->
     $.ajax(
-      url: "/notifications/mark_as_read"
+      url: "/notifications/mark_as_read/"
       dataType: "JSON"
       method: "POST"
       success: ->

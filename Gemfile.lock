@@ -143,6 +143,7 @@ GEM
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroad (0.5.0)
     railroady (1.5.2)
     rails (5.0.0.1)
       actioncable (= 5.0.0.1)
@@ -242,6 +243,7 @@ DEPENDENCIES
   omniauth-facebook (~> 4.0)
   omniauth-google-oauth2 (~> 0.4.1)
   puma (~> 3.0)
+  railroad
   railroady (~> 1.5, >= 1.5.2)
   rails (~> 5.0.0, >= 5.0.0.1)
   sass-rails (~> 5.0)

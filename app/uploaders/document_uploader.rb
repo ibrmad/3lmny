@@ -6,6 +6,6 @@ class DocumentUploader < Shrine
     validate_mime_type_inclusion %w[application/msword application/pdf application/vnd.ms-powerpointtd>
                                    application/vnd.openxmlformats-officedocument.presentationml.presentation
                                    application/vnd.openxmlformats-officedocument.wordprocessingml.document]
-    validate_max_size 5000000
+    validate_max_size 1000000
   end
 end

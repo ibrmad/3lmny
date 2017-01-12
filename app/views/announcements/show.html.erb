@@ -8,6 +8,6 @@
     <%= @announcement.title %>
   </div>
   <div class="content">
-    <%= @announcement.content %>
+    <%= sanitize @announcement.content %>
   </div>
 </div>

@@ -19,7 +19,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
-
+gem 'railroad'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'railroady', '~> 1.5', '>= 1.5.2'

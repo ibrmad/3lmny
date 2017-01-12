@@ -2,22 +2,22 @@
   Admin Dashboard
 </div>
 <div class="admin flex-start">
-  <div class="approve-documents flex-column">
-    <% @documents.each do |document| %>
-    <div class="approve-document white-box flex-start">
-      <div class="title">
-        <%= document.title %>
+  <div class="users flex-column">
+    <% @users.each do |user| %>
+      <div class="user flex-start white-box">
+        <%= image_tag (user.image_url or avatar_for_gender(user)), width: "50px", height: "50px", class: "avatar user-element" %>
+        <div class="username user-element">
+          <%= link_to user.username, user_profile_path(user.username) %>
+        </div>
+        <div class="email user-element">
+          <%= user.email %>
+        </div>
+        <div class="register-date user-element">
+          <%= user.created_at.strftime("%e %b %Y %H:%M %p") %>
+        </div>
       </div>
-      <div class="doc-btn flex-start">
-        <%= link_to "Download", document.document_url, class: "btn" %>
-        <%= form_for document, {action: :approve} do |f| %>
-          <%= f.hidden_field :approved, value: true %>
-          <%= f.submit "Approve", class: "btn" %>
-        <% end %>
-        <%= link_to "delete", document, method: :delete, data: { confirm:  "Are you sure?"}, class: "btn" %>
-      </div>
-    </div>
     <% end %>
+    <%= link_to "Show more users", users_path, class: "showausers btn" %>
   </div>
 
     <div class="admin-functions white-box flex-column">
@@ -26,5 +26,23 @@
       <%= link_to "Add Course", new_course_path %>
       <%= link_to "Add Major", new_major_path %>
       <%= link_to "Add Faculty", new_faculty_path %>
+    </div>
+
+    <div class="approve-documents flex-column">
+      <% @documents.each do |document| %>
+      <div class="approve-document white-box flex-start">
+        <div class="title">
+          <%= document.title %>
+        </div>
+        <div class="doc-btn flex-start">
+          <%= link_to "Download", document.document_url, class: "btn" %>
+          <%= form_for document, {action: :approve} do |f| %>
+            <%= f.hidden_field :approved, value: true %>
+            <%= f.submit "Approve", class: "btn" %>
+          <% end %>
+          <%= link_to "delete", document, method: :delete, data: { confirm:  "Are you sure?"}, class: "btn" %>
+        </div>
+      </div>
+      <% end %>
     </div>
 </div>

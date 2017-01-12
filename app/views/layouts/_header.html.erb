@@ -27,7 +27,7 @@
           <div class="icon-notification function">
             <svg class="icon-notifications" id="show_notifications"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
             <span id="unread_count"></span>
-          </div>
+          </div> 
           <div class="notifications-box" id="notifications_toggle"></div>
         </div>
         <div class="user-info flex-center-around">
@@ -41,7 +41,9 @@
             <%= link_to 'Admin Dashboard', admin_index_path %>
           <% end %>
           <%= link_to 'Edit profile info', edit_user_profile_path(current_user) %>
-          <%= link_to 'Edit password', edit_password_users_path(current_user) %>
+          <% if not current_user.encrypted_password.blank? %>
+            <%= link_to 'Edit password', edit_password_users_path(current_user) %>
+          <% end %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </div>
       </div>

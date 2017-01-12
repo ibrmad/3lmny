@@ -10,7 +10,8 @@
   <% end %>
 
     <%= f.text_field :name, placeholder: "major name" %>
-    <%= select_tag :faculty_id, options_for_select(@faculties), prompt: "faculty name:" %>
+    <%= collection_select(nil, :faculty_id, Faculty.all, :id, :name, prompt: "faculty name:") %>
+    <%#= select_tag :faculty_id, options_for_select(@faculties), prompt: "faculty name:" %>
     <%= f.submit "Add", class: "btn" %>
 
 <% end %>

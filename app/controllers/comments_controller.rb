@@ -5,15 +5,13 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comment_params
     @comment.user = current_user
-    if @commentable === Post
+    if @comment.save
       if not @commentable.user == current_user
         Notification.create(recipient: @commentable.user, actor: current_user, action: "comment on your discussion!", notifiable: @commentable)
       end
       (@commentable.users.uniq - [current_user, @commentable.user]).each do |user|
         Notification.create(recipient: user, actor: current_user, action: "comment on a discussion you comment on!", notifiable: @comment)
       end
-    end
-    if @comment.save
       redirect_to :back, notice: 'Comment was successfully created.'
     else
       redirect_to :back, alert: 'Something went wrong!'
