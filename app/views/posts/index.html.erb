@@ -72,19 +72,21 @@
       </div>
     </div>
 
-    <div class="side-block white-box">
-      <div class="title">
-        UPCOMING
-      </div>
-      <div class="content">
-        <div style="background-image:url(<%= @announcement.image_url %>);" class="announcement">
-          <%= link_to @announcement.title, announcement_path(@announcement), class: "title" %>
-          <div class="date">
-            <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
-            <%= @announcement.date.strftime("%b %e, %l:%M %p") %>
+    <% if @announcement.present? %>
+      <div class="side-block white-box">
+        <div class="title">
+          UPCOMING
+        </div>
+        <div class="content">
+          <div style="background-image:url(<%= @announcement.image_url %>);" class="announcement">
+            <%= link_to @announcement.title, announcement_path(@announcement), class: "title" %>
+            <div class="date">
+              <svg class="icon-calendar sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-calendar"></use></svg>
+              <%= @announcement.date.strftime("%b %e, %l:%M %p") %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

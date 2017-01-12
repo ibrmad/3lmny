@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       @posts = Post.order('created_at DESC').paginate(page: params[:page], per_page: 15)
     end
     @top_courses = Post.top_courses
-    @announcement = Announcement.order("date ASC").first
+    @announcement = Announcement.where("date > ?", (Time.now + 1.hour)).order("date ASC").limit(1).first
   end
 
   def show
