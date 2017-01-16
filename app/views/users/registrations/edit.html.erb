@@ -50,7 +50,7 @@
           </label>
           <div class="view-pic" style="background-image: url(<%= (@user.cached_image_data or @user.image_url or avatar_for_gender(@user)) %>)"></div>
           <%= f.hidden_field :image, value: f.object.cached_image_data %>
-          <%= f.file_field :image, id: "avatar_upload", onchange: "readURL(this);" %>
+          <%= f.file_field :image, id: "avatar_upload", onchange: "readURL(this);", accept: ".png, .jpeg, .jpg" %>
         </div>
         <small><i>for a perfect prfile picture we prefer to use a square pictures e.g. 200x200 ...</i></small>
       </div>

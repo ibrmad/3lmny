@@ -1,16 +1,4 @@
 <div class="users flex-column">
-  <div class="user flex-start">
-    <%= image_tag "avatar", width: "50px", height: "50px", class: "avatar user-element" %>
-    <div class="username user-element">
-      USERNAME
-    </div>
-    <div class="email user-element">
-      EMAIL
-    </div>
-    <div class="register-date user-element">
-      REGISTRATION DATE
-    </div>
-  </div>
 
   <% @users.each do |user| %>
     <div class="user flex-start white-box">
@@ -24,6 +12,7 @@
       <div class="register-date user-element">
         <%= user.created_at.strftime("%e %b %Y %H:%M %p") %>
       </div>
+      <%= link_to "Delete", admin_delete_user_path(user), :method => :delete, data: { confirm:  "Are you sure?"}, class: "btn delete-user" %>
     </div>
   <% end %>
 </div>

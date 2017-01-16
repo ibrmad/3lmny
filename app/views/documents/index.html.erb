@@ -32,7 +32,7 @@
           </div>
           <%= link_to course_path(document.course), class: "course info-element" do %>
           <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-          <%= truncate(document.course.name, length: 32) %>
+          <%= truncate(document.course.name, length: 25) %>
           <% end %>
         </div>
         <%= link_to document.document_url, class: "download-btn" do %>

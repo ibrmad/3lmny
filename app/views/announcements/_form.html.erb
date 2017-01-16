@@ -16,7 +16,7 @@
       <span>Select a picture</span>
     </label>
     <%= f.hidden_field :image, value: f.object.cached_image_data %>
-    <%= f.file_field :image, id: "avatar_upload" %>
+    <%= f.file_field :image, id: "avatar_upload", accept: ".png, .jpeg, .jpg" %>
     <div class="date">
       <%= f.datetime_select(:date, ampm: true, time_separator: "", datetime_separator: "",
                             prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year', hour: 'Choose hour', minute: 'Choose minute'},

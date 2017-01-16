@@ -38,36 +38,21 @@
       </label>
       <nav id="side_nav">
         <% if user_signed_in? %>
-          <div class="side-elements">
-            <!-- <div class="user-functions flex-center-around">
-              <div class="icon-notification function">
-                <svg class="icon-notifications" id="show_notifications"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-notifications"></use></svg>
-                <span id="unread_count"></span>
-              </div>
-              <div class="notifications-box" id="notifications_toggle"></div>
-            </div> -->
-            <div class="user-info flex-center-around">
-              <%= link_to user_profile_path(current_user.username) do %>
-                <img src="<%= current_user.image_url or asset_path 'default-avatar.png' %>" class="user-avatar" alt="user-avatar" width="32" height="32" />
-              <% end %>
-            </div>
-          </div>
           <%= form_tag searches_path, method: :get, class: "search-box" do |f| %>
             <%= text_field_tag :search, params[:search], placeholder: "search", class: "search-feild" %>
           <% end %>
           <div class="mobile_user_settings flex-column">
-            <%= link_to user_profile_path(current_user.username) do %>
-              My Profile
+            <%= link_to "My Profile", user_profile_path(current_user.username) %>
+            <% if current_user.is_admin %>
+              <%= link_to 'Admin Dashboard', admin_index_path %>
             <% end %>
-            <%= link_to 'Edit Profile', edit_user_profile_path(current_user) %>
-            <%= link_to 'Add Discussion', new_post_path %>
-            <%= link_to 'Add Document', new_document_path %>
+            <%= link_to 'Edit profile info', edit_user_profile_path(current_user) %>
+            <% if not current_user.encrypted_password.blank? %>
+              <%= link_to 'Edit password', edit_password_users_path(current_user) %>
+            <% end %>
+            <%= link_to 'Add discussion', new_post_path %>
+            <%= link_to 'Add document', new_document_path %>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-          </div>
-        <% else %>
-          <div class="side-elements">
-            <%= link_to 'Login', login_path, class: "login header-btn" %>
-            <%= link_to 'Register', register_path, class: "register header-btn" %>
           </div>
         <% end %>
 

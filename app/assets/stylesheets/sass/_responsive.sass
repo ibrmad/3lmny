@@ -2,6 +2,7 @@
   .container
     max-width: 1440px
 @media (min-width: 770px)
+
   .document
     &:hover
       .hidden-doc-info
@@ -9,21 +10,62 @@
 @media (max-width: 1000px)
   .container
     padding: 0 .5em
+  .single-video
+    width: 720px
+    margin: 0 auto
+  #ytplayer
+    width: 720px
+    height: 414px
   #side_nav, #toggle_label
     display: block
     visibility: visible
-  .header-nav,  #Header .side-elements, #user_settings_label, #search_toggle_label, .search-box, .posts-sidebar
+  .header-nav, #user_settings_label, #search_toggle_label, .search-box, .posts-sidebar
     display: none
     visibility: hidden
   .header-elements
-    justify-content: center
+    // justify-content: center
     align-items: center
+    padding: 0
+    padding-left: 2.6em
+  #user_settings
+    right: 11px
+  #notifications_toggle
+    right: 72px
+  .post .index-votes
+    width: 100%
   .posts
     width: 100%
     margin-right: 0
   .posts-search-res
     display: flex
+  .post .info
+    flex-wrap: wrap
+    // flex-direction: column
+    align-items: flex-start
 @media (max-width: 770px)
+  .post_form
+    flex-direction: column !important
+    .post-content
+      width: 100%
+      margin: 0
+    .post-info
+      width: 100%
+      margin: 0
+  .document-form
+    flex-direction: column !important
+    .new_document
+      width: 100% !important
+      margin: 0 !important
+    .document-inst
+      width: 100% !important
+  .user .register-date
+    display: none
+  .single-video
+    width: 560px
+    margin: 0 auto
+  #ytplayer
+    width: 560px
+    height: 322px
   .posts .info
     flex-wrap: wrap
     flex-direction: column
@@ -37,8 +79,33 @@
   .download-btn-hidden
     display: block
     visibility: visible
-
 @media (max-width: 650px)
+  .admin
+    flex-direction: column
+    .users
+      width: 100%  !important
+      border-right: none !important
+      padding: 0 0 1em 0 !important
+      border-bottom: 1px solid #ccc
+    .admin-functions
+      width: 100%  !important
+    .approve-documents
+      width: 100%  !important
+  .approve-document
+    flex-direction: column !important
+    .title
+      padding: 1em
+      margin-bottom: 1em
+    .doc-btn
+      width: 100%
+      flex-direction: column !important
+      .edit_document
+        width: 98.5%
+        margin: .5em 0em
+        input
+          width: 100%
+          padding-left: 0
+          padding-right: 0
   .documents-functions
     flex-direction: column
     .documents-search
@@ -60,3 +127,36 @@
       width: 50px
     .search-field
       width: 100%
+
+@media (max-width: 570px)
+  
+  .user
+    .email
+      display: none
+    .username
+      width: 150px
+  .single-announcement .announcement-img
+    min-width: 200px !important
+    height: 300px !important
+  .single-video
+    width: 400px
+    margin: 0 auto
+  #ytplayer
+    width: 400px
+    height: 230px
+@media (max-width: 420px)
+  #Footer
+    height: 120px !important
+    align-items: center
+    flex-wrap: wrap
+    justify-content: center  !important
+  .container
+    padding: 0
+  .single-video
+    padding: 0
+
+    width: 320px
+    margin: 0 auto
+  #ytplayer
+    width: 320px
+    height: 184px

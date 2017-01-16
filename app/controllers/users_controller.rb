@@ -16,7 +16,13 @@ class UsersController < ApplicationController
       render :edit_password
     end
   end
-
+  def destroy
+    @user = User.find(params[:id])
+    @user.delete
+    if @user.delete  
+      redirect_to admin_index_path, notice: "user has been deleted successfully!"
+    end
+  end
   private
 
   def user_params

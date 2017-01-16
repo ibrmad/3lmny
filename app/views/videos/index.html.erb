@@ -23,7 +23,7 @@
       </div>
       <%= link_to course_path(video.course), class: "course" do %>
         <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-        <%= truncate(video.course.name, length: 32) %>
+        <%= truncate(video.course.name, length: 25) %>
       <% end %>
     </div>
   <% end %>

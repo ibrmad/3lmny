@@ -3,6 +3,7 @@
 </div>
 <div class="admin flex-start">
   <div class="users flex-column">
+    <h1>Users</h1>
     <% @users.each do |user| %>
       <div class="user flex-start white-box">
         <%= image_tag (user.image_url or avatar_for_gender(user)), width: "50px", height: "50px", class: "avatar user-element" %>
@@ -20,15 +21,17 @@
     <%= link_to "Show more users", users_path, class: "showausers btn" %>
   </div>
 
-    <div class="admin-functions white-box flex-column">
-      <%= link_to "Add Announcement", new_announcement_path %>
-      <%= link_to "Add Video", new_video_path %>
-      <%= link_to "Add Course", new_course_path %>
-      <%= link_to "Add Major", new_major_path %>
-      <%= link_to "Add Faculty", new_faculty_path %>
-    </div>
+  <div class="admin-functions flex-column">
+    <h1>Admin Funcions</h1>
+    <%= link_to "Add Announcement", new_announcement_path, class: "white-box" %>
+    <%= link_to "Add Video", new_video_path, class: "white-box" %>
+    <%= link_to "Add Course", new_course_path, class: "white-box" %>
+    <%= link_to "Add Major", new_major_path, class: "white-box" %>
+    <%= link_to "Add Faculty", new_faculty_path, class: "white-box" %>
+  </div>
 
     <div class="approve-documents flex-column">
+      <h1>Documents to approve</h1>
       <% @documents.each do |document| %>
       <div class="approve-document white-box flex-start">
         <div class="title">

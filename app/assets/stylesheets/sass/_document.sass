@@ -60,24 +60,28 @@
   flex-direction: column
   padding: 2em
   background: #fff
-  width: 700px
+  width: 65%
   height: auto
   margin-right: 2em
 .document-form
   display: flex
   justify-content: center
-.new-text
-  max-width: 500px
-  ul
-    list-style-type: circle
-    padding: 1.2em
-    li
-      font-size: 1.3em
-      font-family: $headline-font
-      margin-top: 1em
-  h1
-    color: $accent-color
-    font-size: 2em
+  .document-inst
+    width: calc(35% - 2em)
+    h1
+      font-size: 2.3em
+      margin-left: .4em
+      color: $primary-color
+    ul
+      list-style-type: square
+      margin: 0
+      padding: 0 0 0 2em
+      li
+        font-size: 1.1em
+        padding: 1em 0
+        border-bottom: 1px solid #ccc
+        &:last-of-type
+          border-bottom: none
 #document_title
   width: 100%
   margin-top: -.3em

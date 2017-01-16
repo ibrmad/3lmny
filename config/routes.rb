@@ -46,10 +46,9 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations',
   }
   devise_scope :user do
-
+    match 'users/:id', to: 'users#destroy', via: :delete, as: :admin_delete_user
     get 'users/:username', to: 'users/sessions#profile', as: 'user_profile'
     get 'users/:id/edit', to: 'users/registrations#edit', as: 'edit_user_profile'
-    # get 'users/:id/update_password', to: 'users/registrations#update_password', as: 'update_user_password'
     get 'users', to: 'users/registrations#index', as: 'users'
     get 'login', to: 'users/sessions#new', as: 'login'
     get 'register', to: 'users/registrations#new', as: 'register'

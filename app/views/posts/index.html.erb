@@ -12,7 +12,7 @@
           <%= link_to post.title, post_path(post) %>
         </div>
         <div class="info flex-center-start">
-          <div class="votes flex-center-around">
+          <div class="votes index-votes flex-center-around">
             <%= link_to upvote_post_path(post), method: :patch, remote: true, class: "upvote vote-box" do %>
             <svg class="icon-chevron-down upvote-icon sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chevron-down"></use></svg>
             <% end %>
@@ -25,7 +25,7 @@
           </div>
           <div class="username info-element">
             <%= image_tag (post.user.image_url or avatar_for_gender(post.user)), width: "20px", height: "20px", class: "user_avatar" %>
-            <%= link_to post.user.username, user_profile_path(post.user.username) %>
+            <%= link_to truncate(post.user.username, length: 25), user_profile_path(post.user.username) %>
           </div>
           <div class="time-ago info-element">
             <svg class="icon-time sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-time"></use></svg>
@@ -33,7 +33,7 @@
           </div>
           <%= link_to course_path(post.course), class: "course info-element" do %>
           <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-          <%= truncate(post.course.name, length: 32) %>
+          <%= truncate(post.course.name, length: 25) %>
           <% end %>
           <div class="comments info-element">
             <svg class="icon-chat sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-chat"></use></svg>

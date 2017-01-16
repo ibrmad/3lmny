@@ -83,6 +83,9 @@ body
 #Video_section
   img
     margin-right: 1.5em
+#Discuss_section_hidden
+  display: none
+  visibility: hidden
 #Discuss_section
   img
     margin-left: 1.5em
@@ -92,6 +95,7 @@ body
 .section
   height: 500px
   width: 100%
+  margin: 0 auto
   display: flex
   align-items: center
   justify-content: center
@@ -123,36 +127,6 @@ body
     font-size: 3em
     font-weight: 300
     margin-top: .5em
-
-
-
-
-
-
-@media(max-width: 1300px)
-  #Header
-    .description
-      font-size: 2.0em
-      max-width: 500px
-
-@media(min-width: 1500px)
-  #Document_section
-    margin-top: 300px
-  #Header
-    .logo
-      width: 180px
-    .description
-      top: 200px
-      font-size: 3.2em
-      max-width: 800px
-@media(min-width: 2200px)
-  #Header
-    .logo
-      width: 300px
-    .description
-      top: 250px
-      font-size: 5em
-      max-width: 1200px
 .alert
   width: auto
   padding: 1em
@@ -185,3 +159,114 @@ body
   background: #4bc90f
 .alert-alert
   background: #ed4113
+
+/////////////////////////////////////////////////
+
+
+
+@media(max-width: 1300px)
+  #Header
+    .description
+      font-size: 2.0em
+      max-width: 500px
+
+@media(min-width: 1500px)
+  #Document_section
+    margin-top: 300px
+  #Header
+    .logo
+      width: 180px
+    .description
+      top: 200px
+      font-size: 3.2em
+      max-width: 800px
+@media(min-width: 2200px)
+  #Header
+    .logo
+      width: 300px
+    .description
+      top: 250px
+      font-size: 5em
+      max-width: 1200px
+@media(max-width: 950px)
+  #Header .description
+    font-size: 1.8em
+@media(max-width: 950px)
+  #Header .shapes
+    width: 60%
+    top: 150px
+@media(max-width: 720px)
+  #Discuss_section_hidden
+    display: flex
+    visibility: visible
+  #Discuss_section
+    display: none
+    visibility: hidden
+  #Explore_section
+    .text
+      font-size: 2.5em !important
+    .explore
+      padding: 1em 3em
+  .section
+    height: auto
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    img
+      height: 250px
+      margin: 0 .5em
+    .text
+      width: 50%
+      text-align: center
+      margin-top: 1em
+      p
+        font-size: 2.5em
+      small
+        font-size: 1em
+
+  #Header
+    height: 1100px
+    .logo
+      left: calc(50% - 85px)
+    .shapes
+      width: 80%
+      top: 150px
+    .description
+      top: 650px
+    .buttons
+      right: calc(50% - 141px)
+      top: 130px
+@media(max-width: 600px)
+  #Header
+    .shapes
+      width: 100%
+      top: 180px
+    .description
+      top: 670px
+@media(max-width: 450px)
+  #Header
+    height: 1050px
+    .description
+      top: 590px
+@media(max-width: 400px)
+  #Header .description
+    top: 550px
+@media(max-width: 320px)
+  #Header .description
+    top: 500px
+
+// @media(max-width: 550px)
+//   #Header
+//     height: 1100px
+//     .logo
+//       left: calc(50% - 85px)
+//     .shapes
+//       width: 100%
+//       top: 180px
+//     .description
+//       top: 650px
+//     .buttons
+//       right: calc(50% - 141px)
+//       top: 130px
