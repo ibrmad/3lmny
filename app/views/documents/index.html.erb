@@ -19,7 +19,6 @@
           <div class="title">
             <%= document.title %>
           </div>
-          <%# extension_type(document.document.mime_type) %>
         </div>
         <div class="document-info flex-column">
           <div class="username info-element">
@@ -34,6 +33,12 @@
           <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
           <%= truncate(document.course.name, length: 25) %>
           <% end %>
+          <div class="info-element">
+            <% if current_user.is_admin %>
+              <%= link_to "delete", document, method: :delete, data: { confirm:  "Are you sure?"} %>
+            <% end %>
+          </div>
+
         </div>
         <%= link_to document.document_url, class: "download-btn" do %>
         Download
