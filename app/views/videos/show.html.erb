@@ -17,7 +17,7 @@
     <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
     <%= truncate(@video.course.name, length: 32) %>
     <% end %>
-    <% if @video.user == current_user %>
+    <% if current_user.try(:is_admin) %>
       <%= link_to edit_video_path(@video), class: "edit" do %>
         <svg class="icon-create sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-create"></use></svg>
         Edit

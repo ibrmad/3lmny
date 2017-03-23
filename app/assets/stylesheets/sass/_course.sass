@@ -7,32 +7,22 @@
   height: 50px
   background: white
 .course-show
+  background: $primary-color
+  background: linear-gradient(10deg, #70DBFF, #2fadff)
   margin-bottom: 1em
   padding: .7em 1em
   font-family: $headline-font
-  font-size: 1.3em
+  font-size: 1.4em
   color: #fff
   min-width: 250px
-  height: 150px
-  background-size: cover
+  height: 100px
   position: relative
   margin: 0 1em 2em 1em
-  &::after
-    content: ""
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    // background: rgba(0, 0, 0, 0.55)
-    box-shadow: inset 0 0 200px 10px rgba(0, 0, 0, 1)
-    z-index: 5
   .name
     position: absolute
     bottom: 10px
     left: 10px
     z-index: 666
-    font-weight: bold
     letter-spacing: 1.1px
 .course-name
   margin-bottom: 1em

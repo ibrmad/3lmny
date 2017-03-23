@@ -51,14 +51,13 @@
       <% @documents.each do |document| %>
         <div class="document white-box">
           <div class="extension-type">
-            <%= extension_type(document.document.mime_type) %>
-          </div>
-          <div class="document-info flex-column">
             <div class="title">
               <%= document.title %>
             </div>
+          </div>
+          <div class="document-info flex-column">
             <div class="username info-element">
-              <%= image_tag (document.user.image_url or asset_path 'default-avatar.png'), width: "20px", height: "20px", class: "user_avatar" %>
+              <%= image_tag (document.user.image_url or avatar_for_gender(document.user)), width: "20px", height: "20px", class: "user_avatar" %>
               <%= link_to document.user.username, user_profile_path(document.user.username) %>
             </div>
             <div class="time-ago info-element">
@@ -67,17 +66,17 @@
             </div>
             <%= link_to course_path(document.course), class: "course info-element" do %>
             <svg class="icon-apps sixteenth-px"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-apps"></use></svg>
-            <%= truncate(document.course.name, length: 32) %>
+            <%= truncate(document.course.name, length: 25) %>
             <% end %>
+            <div class="info-element">
+              <% if current_user.try(:is_admin) %>
+                <%= link_to "delete", document, method: :delete, data: { confirm:  "Are you sure?"} %>
+              <% end %>
+            </div>
           </div>
-          <%= link_to document.document_url, class: "download-btn-hidden" do %>
+          <%= link_to document.document_url, class: "download-btn" do %>
           Download
           <% end %>
-          <div class="hidden-doc-info">
-            <%= link_to document.document_url, class: "download-btn" do %>
-            Download
-            <% end %>
-          </div>
         </div>
       <% end %>
     </div>

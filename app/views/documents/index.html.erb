@@ -34,7 +34,7 @@
           <%= truncate(document.course.name, length: 25) %>
           <% end %>
           <div class="info-element">
-            <% if current_user.is_admin %>
+            <% if current_user.try(:is_admin) %>
               <%= link_to "delete", document, method: :delete, data: { confirm:  "Are you sure?"} %>
             <% end %>
           </div>

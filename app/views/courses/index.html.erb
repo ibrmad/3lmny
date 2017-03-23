@@ -9,7 +9,7 @@
   </div>
   <div class="courses">
     <% @courses.each do |course| %>
-        <%= link_to course_path(course), class: "course-show white-box", style: "background-image: url(#{course.image_url})" do %>
+        <%= link_to course_path(course), class: "course-show white-box" do %>
           <div class="name">
             <%= course.name %>
           </div>
