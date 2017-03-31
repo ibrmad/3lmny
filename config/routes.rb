@@ -53,12 +53,5 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new', as: 'login'
     get 'register', to: 'users/registrations#new', as: 'register'
   end
-
-  authenticated :user do
-    root to: "posts#index"
-    # Rails 4 users must specify the 'as' option to give it a unique name
-    # root :to => "main#dashboard", :as => "authenticated_root"
-  end
-
-  root to: "static_pages#index"
+  root to: "posts#index"
 end
