@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:search] and not params[:search].empty?
-      @posts = Post.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 15)
+      @posts = Post.search(params[:search]).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
     else
-      @posts = Post.order('created_at DESC').paginate(page: params[:page], per_page: 15)
+      @posts = Post.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
     end
     @top_courses = Post.top_courses
     @announcement = Announcement.where("date > ?", (Time.now + 1.hour)).order("date ASC").limit(1).first
