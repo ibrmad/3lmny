@@ -53,5 +53,9 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new', as: 'login'
     get 'register', to: 'users/registrations#new', as: 'register'
   end
-  root to: "posts#index"
+  authenticated :user do
+    root to: "posts#index"
+  end
+
+  root to: "static_pages#index"
 end
