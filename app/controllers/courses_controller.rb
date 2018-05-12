@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    if params[:major_id] and not params[:major_id].empty?
+    if params[:major_id] && params[:major_id].present?
       @courses = Course.where(major_id: params[:major_id]).order(:name)
       @major = Major.find(params[:major_id])
     else
