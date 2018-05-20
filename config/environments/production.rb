@@ -14,14 +14,14 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => '3lmny.me' }
+  config.action_mailer.default_url_options = { :host => ENV["HOST_DOMAIN"] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            '',
-    password:             '',
+    user_name:            ENV["CONFIRMATION_EMAIL"],
+    password:             ENV["CONFIRMATION_EMAIL_PASSWORD"],
     authentication:       :plain,
     enable_starttls_auto: true
   }

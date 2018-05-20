@@ -23,13 +23,4 @@
     <%= link_to "Forgot your password?", new_user_password_path %> |
     <%= link_to "Register", register_path %>
   </div>
-
-  <%= link_to user_facebook_omniauth_authorize_path, class: "social-login-btn facebook-btn" do %>
-    <svg class="icon-facebook-alt"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-facebook-alt"></use></svg>
-    <span>Register using Facebook</span>
-  <% end %>
-  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "social-login-btn google-btn" do %>
-    <svg class="icon-google-alt"><use xlink:href="<%= asset_path 'icons.svg' %>#icon-google-alt"></use></svg>
-    <span>Register using Google</span>
-  <% end %>
 </div>
